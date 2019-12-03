@@ -198,6 +198,14 @@ a.article:hover {
     #sidebarCollapse span {
         display: none;
     }
+    .purple {
+        width: 100% !important;
+        left: 0 !important;
+    }
+    .nav-expand {
+        width: calc(100% - 250px) !important;
+        left: 250px !important;
+    }
 }
 
 .purple {
@@ -275,5 +283,5 @@ a.article:hover {
 
 .nav-expand {
     width: 100% !important;
-    left: 0 !important;
+    left: 0;
 }

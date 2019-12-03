@@ -87,7 +87,6 @@
                         <i class="fas fa-bars whitesmoke"></i>
                     </button>
 
-
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         @if (Route::has('login'))
                         <ul class="nav navbar-nav ml-auto">
