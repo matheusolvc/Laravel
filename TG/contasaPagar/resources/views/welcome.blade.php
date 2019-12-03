@@ -15,6 +15,9 @@
         <!-- Styles -->
         <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+        <!-- Scripts -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
     </head>
 
     <body>
@@ -111,7 +114,7 @@
             <!-- Page Content  -->
             <div id="content">
 
-                    @yield('body-content')
+                @yield('body-content')
 
             </div>
         </div>
@@ -129,15 +132,8 @@
             integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous">
         </script>
 
-        <script type="text/javascript">
-            $(document).ready(function () {
-                    $('#sidebarCollapse').on('click', function () {
-                        $('#sidebar').toggleClass('active');
-                        $('#nav-top').toggleClass('nav-expand');
-                        $('#content').toggleClass('nav-expand')
-                    });
-                });
-        </script>
+        <script src="{{ asset('js/custom.js') }}" type="text/javascript"></script>
+
     </body>
 
 </html>
