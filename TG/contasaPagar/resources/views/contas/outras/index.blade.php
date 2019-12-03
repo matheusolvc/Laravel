@@ -1,31 +1,10 @@
 @extends('welcome')
 @section('body-content')
 <div class="row">
-    <div class="col-sm-6 div-card">
-        <div class="card card-dashboard">
-            <div class="card-body">
-                <h5 class="card-title">Contas</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-6 div-card">
-        <div class="card card-dashboard">
-            <div class="card-body">
-                <h5 class="card-title">Reembolsos</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="row">
     <div class="col-sm-12 div-card">
         <div class="card card-dashboard">
             <div class="card-body">
-                <h5 class="card-title table-title">Impostos</h5>
+                <h5 class="card-title table-title">Outras contas</h5>
                 <table class="table table-hover">
                     <thead class="thead-light">
                         <tr>
@@ -94,7 +73,7 @@
                 </table>
                 {{-- https://www.tutsmake.com/laravel-6-pagination-with-bootstrap-table-example/ --}}
                 {{-- https://appdividend.com/2018/02/23/laravel-pagination-example-tutorial/ --}}
-                <nav aria-label="pages">
+                <nav aria-label="pages" class="button-left">
                     <ul class="pagination">
                         <li class="page-item">
                             <a class="page-link" href="#" tabindex="-1">Anterior</a>
@@ -111,9 +90,9 @@
                         </li>
                     </ul>
                 </nav>
+                <button type="button" class="btn btn-success button-right btn-new">Novo</button>
             </div>
         </div>
     </div>
 </div>
-
 @endsection

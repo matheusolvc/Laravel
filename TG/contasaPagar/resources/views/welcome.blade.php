@@ -80,42 +80,40 @@
 
                 </ul>
             </nav>
+            <nav id="nav-top" class="purple navbar navbar-expand-lg navbar-light">
+                <div class="container-fluid">
 
+                    <button type="button" id="sidebarCollapse" class="btn-custom">
+                        <i class="fas fa-bars whitesmoke"></i>
+                    </button>
+
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        @if (Route::has('login'))
+                        <ul class="nav navbar-nav ml-auto">
+                            @auth
+                            <li class="nav-item active">
+
+                                <a class="nav-link" href="{{ url('/home') }}">Home</a>
+                                @else
+                                <a class="nav-link" href="{{ route('login') }}">Login</a>
+                            </li>
+                            <li class="nav-item">
+                                @if (Route::has('register'))
+                                <a class="nav-link" href="{{ route('register') }}">Register</a>
+                                @endif
+                            </li>
+                            @endauth
+                        </ul>
+                        @endif
+                    </div>
+                </div>
+            </nav>
             <!-- Page Content  -->
             <div id="content">
 
-                <nav class="purple navbar navbar-expand-lg navbar-light">
-                    <div class="container-fluid">
-
-                        <button type="button" id="sidebarCollapse" class="btn-custom">
-                            <i class="fas fa-bars whitesmoke"></i>
-                        </button>
-
-
-                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                            @if (Route::has('login'))
-                            <ul class="nav navbar-nav ml-auto">
-                                @auth
-                                <li class="nav-item active">
-
-                                    <a class="nav-link" href="{{ url('/home') }}">Home</a>
-                                    @else
-                                    <a class="nav-link" href="{{ route('login') }}">Login</a>
-                                </li>
-                                <li class="nav-item">
-                                    @if (Route::has('register'))
-                                    <a class="nav-link" href="{{ route('register') }}">Register</a>
-                                    @endif
-                                </li>
-                                @endauth
-                            </ul>
-                            @endif
-                        </div>
-                    </div>
-                </nav>
-                <div class="body-content">
                     @yield('body-content')
-                </div>
+
             </div>
         </div>
 
@@ -136,6 +134,8 @@
             $(document).ready(function () {
                     $('#sidebarCollapse').on('click', function () {
                         $('#sidebar').toggleClass('active');
+                        $('#nav-top').toggleClass('nav-expand');
+                        $('#content').toggleClass('nav-expand')
                     });
                 });
         </script>

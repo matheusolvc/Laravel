@@ -54,15 +54,18 @@ a:focus {
 .wrapper {
     display: flex;
     width: 100%;
-    align-items: stretch;
 }
 
 #sidebar {
-    min-width: 250px;
-    max-width: 250px;
     background: #505050;
     color: #fff;
     transition: all 0.3s;
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    z-index: 999;
 }
 
 #sidebar.active {
@@ -156,9 +159,18 @@ a.article:hover {
 ----------------------------------------------------- */
 
 #content {
-    width: 100%;
+    width: calc(100% - 250px);
+    padding: 20px;
     min-height: 100vh;
     transition: all 0.3s;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-top: 55px;
+}
+
+#content.active {
+    width: 100%;
 }
 
 .body-content {
@@ -177,6 +189,12 @@ a.article:hover {
     #sidebar.active {
         margin-left: 0;
     }
+    #content {
+        width: 100%;
+    }
+    #content.active {
+        width: calc(100% - 250px);
+    }
     #sidebarCollapse span {
         display: none;
     }
@@ -186,6 +204,11 @@ a.article:hover {
     background-color: #673bb7 !important;
     color: whitesmoke !important;
     box-shadow: 0 2px 4px -1px rgba(0, 0, 0, .2), 0 4px 5px 0 rgba(0, 0, 0, .14), 0 1px 10px 0 rgba(0, 0, 0, .12);
+    width: calc(100% - 250px);
+    position: fixed !important;
+    left: 250px;
+    z-index: 10;
+    transition: all 0.3s;
 }
 
 .nav-link {
@@ -209,4 +232,48 @@ a.article:hover {
 
 .div-card {
     margin-bottom: 15px;
+}
+
+.action-icons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+}
+
+.fa-trash-alt,
+.fa-edit {
+    cursor: pointer;
+}
+
+.fa-trash-alt {
+    color: #f44336;
+}
+
+.fa-edit {
+    color: #2196f3;
+}
+
+.table-title {
+    background-color: #673bb7;
+    color: whitesmoke;
+    padding: 20px 15px;
+    border-radius: 5px;
+}
+
+.button-left {
+    float: left;
+}
+
+.button-right {
+    float: right;
+}
+
+.btn-new {
+    padding: 5px 25px !important;
+}
+
+.nav-expand {
+    width: 100% !important;
+    left: 0 !important;
 }
