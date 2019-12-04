@@ -12,7 +12,7 @@ class Conta extends Model
 
     public function fornecedor()
     {
-        return $this->belongsTo('App\Models\Conta', 'id_fornecedor');
+        return $this->belongsTo('App\Models\Fornecedor', 'id_fornecedor');
     }
 
     public function usuario()

@@ -31,7 +31,7 @@
                             <th scope="row">{{$boleto->id}}</th>
                             <td>{{$boleto->dt_emissao}}</td>
                             <td>{{$boleto->dt_vencimento}}</td>
-                            <td>{{$boleto->status}}</td>
+                            <td>{{$boleto->status == 'A' ? 'À Pagar' : 'Pago'}}</td>
                             <td>{{$boleto->valor_documento}}</td>
                             <td>{{$boleto->juros}}</td>
                             <td>{{$boleto->multa}}</td>
@@ -43,6 +43,10 @@
                             @endif
                             <td class="action-icons">
 
+                                <a href="{{ route('contas.pagar', ['id'=>$boleto->id, 'redirect'=>'contas.boletos.index']) }}">
+                                    <i class="fas fa-money-bill-wave" data-toggle="tooltip" data-placement="top"
+                                        title="Pagar"></i>
+                                </a>
                                 <a href="{{ route('contas.boletos.destroy', ['id'=>$boleto->id]) }}">
                                     <i class="fas fa-trash-alt" data-toggle="tooltip" data-placement="top"
                                         title="Excluir"></i>
@@ -61,6 +65,7 @@
                 {{-- https://appdividend.com/2018/02/23/laravel-pagination-example-tutorial/ --}}
                 <nav aria-label="pages" class="button-left">
                     {!! $boletos->links() !!}
+                    {{ $boletos->appends(['sort' => 'valor_documento'])->links() }}
                 </nav>
                 <a href="{{route('contas.boletos.create') }}" class="btn btn-success button-right btn-new">Novo</a>
             </div>

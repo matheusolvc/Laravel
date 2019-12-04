@@ -1,11 +1,15 @@
 @extends('menu')
-@section('title', 'Impostos')
+@section('title', 'Pagar Contas')
 @section('body-content')
 <div class="row">
     <div class="col-sm-12 div-card">
         <div class="card card-dashboard">
             <div class="card-body">
-                <h5 class="card-title table-title">Impostos</h5>
+
+                {{-- TODO - Filtros --}}
+                {{-- END TODO --}}
+
+                <h5 class="card-title table-title">Remessa</h5>
                 <table class="table table-hover">
                     <thead class="thead-light">
                         <tr>
