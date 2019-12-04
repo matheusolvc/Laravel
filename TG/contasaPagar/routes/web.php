@@ -56,6 +56,7 @@ Route::group(['middleware' => 'auth'], function() {
 
     Route::group(['middleware' => 'App\Http\Middleware\UserColaborador'], function () {
         Route::get('/logout', 'Auth\LoginController@logout');
+        //ROTAS GERAIS
     });
 
 });

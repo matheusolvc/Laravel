@@ -30,9 +30,10 @@
                 <p class="user-name">{{ Auth::user()->name }}</p>
                 <ul class="list-unstyled components">
 
-                    <li class="active">
-                        <a href="#">Dashboard</a>
-                    </li>
+                    @if(Auth::user()->tipo_usuario != 'C')
+                        <li class="active">
+                            <a href="#">Dashboard</a>
+                        </li>
                     <li>
                         <a href="#contaSubmenu" data-toggle="collapse" aria-expanded="false"
                             class="dropdown-toggle">Contas</a>
@@ -54,33 +55,26 @@
                     <li>
                         <a href="#">Pagar contas</a>
                     </li>
+                    @endif
                     <li>
                         <a href="#reembolsoSubmenu" data-toggle="collapse" aria-expanded="false"
                             class="dropdown-toggle">Reembolsos</a>
                         <ul class="collapse list-unstyled" id="reembolsoSubmenu">
-                            <li>
-                                <a href="#">Aprovar reembolsos</a>
-                            </li>
+                            @if(Auth::user()->tipo_usuario != 'C')
+                                <li>
+                                    <a href="#">Aprovar reembolsos</a>
+                                </li>
+                            @endif
                             <li>
                                 <a href="#">Solicitações</a>
                             </li>
                         </ul>
                     </li>
-                    <li>
-                        <a href="#relatorioSubmenu" data-toggle="collapse" aria-expanded="false"
-                            class="dropdown-toggle">Relatórios</a>
-                        <ul class="collapse list-unstyled" id="relatorioSubmenu">
-                            <li>
-                                <a href="#">Controle de despesas</a>
-                            </li>
-                            <li>
-                                <a href="#">Relatórios</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="{{ url('/usuarios') }}">Usuários</a>
-                    </li>
+                    @if(Auth::user()->tipo_usuario != 'C')
+                        <li>
+                            <a href="{{ url('/usuarios') }}">Usuários</a>
+                        </li>
+                    @endif
                 </ul>
 
 
