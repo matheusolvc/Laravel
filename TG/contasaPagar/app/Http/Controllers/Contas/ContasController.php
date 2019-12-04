@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Contas;
-
+use App\Models\Conta;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -13,6 +13,13 @@ class ContasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    private $contas;
+
+    public function __construct(Conta $contas)
+    {
+        $this->contas = $contas;
+    }
     public function index()
     {
         //
@@ -20,9 +27,8 @@ class ContasController extends Controller
 
     public function boletos()
     {
-
-
-        return view('contas.boletos.index');
+        $boletos  = Conta::where('tipo_conta', '=', 'B')->paginate(7);
+        return view('contas.boletos.index', compact('boletos'));
     }
 
     /**
