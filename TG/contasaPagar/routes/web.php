@@ -23,21 +23,21 @@ Route::group(['middleware' => 'auth'], function() {
             });
 
             Route::group(['prefix' => 'impostos', 'namespace' => 'Contas'], function () {
-                Route::get('', ['as' => 'contas.boletos.index', 'uses' => 'ImpostosController@index']);
-                Route::get('create', ['as' => 'contas.boletos.create', 'uses' => 'ImpostosController@create']);
-                Route::post('store', ['as' => 'contas.boletos.store', 'uses' => 'ImpostosController@store']);
-                Route::get('edit/{id}', ['as' => 'contas.boletos.edit', 'uses' => 'ImpostosController@edit']);
-                Route::put('update/{id}', ['as' => 'contas.boletos.update', 'uses' => 'ImpostosController@update']);
-                Route::get('destroy/{id}', ['as' => 'contas.boletos.destroy', 'uses' => 'ImpostosController@destroy']);
+                Route::get('', ['as' => 'contas.impostos.index', 'uses' => 'ImpostosController@index']);
+                Route::get('create', ['as' => 'contas.impostos.create', 'uses' => 'ImpostosController@create']);
+                Route::post('store', ['as' => 'contas.impostos.store', 'uses' => 'ImpostosController@store']);
+                Route::get('edit/{id}', ['as' => 'contas.impostos.edit', 'uses' => 'ImpostosController@edit']);
+                Route::put('update/{id}', ['as' => 'contas.impostos.update', 'uses' => 'ImpostosController@update']);
+                Route::get('destroy/{id}', ['as' => 'contas.impostos.destroy', 'uses' => 'ImpostosController@destroy']);
             });
 
             Route::group(['prefix' => 'outras', 'namespace' => 'Contas'], function () {
-                Route::get('', ['as' => 'contas.boletos.index', 'uses' => 'OutrasController@index']);
-                Route::get('create', ['as' => 'contas.boletos.create', 'uses' => 'OutrasController@create']);
-                Route::post('store', ['as' => 'contas.boletos.store', 'uses' => 'OutrasController@store']);
-                Route::get('edit/{id}', ['as' => 'contas.boletos.edit', 'uses' => 'OutrasController@edit']);
-                Route::put('update/{id}', ['as' => 'contas.boletos.update', 'uses' => 'OutrasController@update']);
-                Route::get('destroy/{id}', ['as' => 'contas.boletos.destroy', 'uses' => 'OutrasController@destroy']);
+                Route::get('', ['as' => 'contas.outras.index', 'uses' => 'OutrasController@index']);
+                Route::get('create', ['as' => 'contas.outras.create', 'uses' => 'OutrasController@create']);
+                Route::post('store', ['as' => 'contas.outras.store', 'uses' => 'OutrasController@store']);
+                Route::get('edit/{id}', ['as' => 'contas.outras.edit', 'uses' => 'OutrasController@edit']);
+                Route::put('update/{id}', ['as' => 'contas.outras.update', 'uses' => 'OutrasController@update']);
+                Route::get('destroy/{id}', ['as' => 'contas.outras.destroy', 'uses' => 'OutrasController@destroy']);
             });
         });
 
