@@ -11,14 +11,10 @@
                             <tr>
                                 <th scope="col">Sel.</th>
                                 <th scope="col">Nº</th>
-                                <th scope="col">Dt. Emissão</th>
-                                <th scope="col">Dt. Vencimento</th>
                                 <th scope="col">Status</th>
-                                <th scope="col">Valor</th>
-                                <th scope="col">Juros</th>
-                                <th scope="col">Total</th>
-                                <th scope="col">Dt. Pagamento</th>
-                                <th scope="col">Valor recebido</th>
+                                <th scope="col">Dt. Solicitação</th>
+                                <th scope="col">Dt. Vencimento</th>
+                                <th scope="col">Valor a pagar</th>
                                 <th scope="col">Ações</th>
                             </tr>
                         </thead>
@@ -28,14 +24,10 @@
                                     <input type="checkbox" class="chk">
                                 </th>
                                 <th scope="row">1</th>
+                                <td>Pendente</td>
                                 <td>01/11/2019</td>
                                 <td>15/11/2019</td>
-                                <td>Pendente</td>
                                 <td>R$ 123.3</td>
-                                <td>0</td>
-                                <td>R$ 123.3</td>
-                                <td>-</td>
-                                <td>0</td>
                                 <td class="action-icons">
                                     <i class="fas fa-trash-alt" data-toggle="tooltip" data-placement="top"
                                         title="Excluir"></i>

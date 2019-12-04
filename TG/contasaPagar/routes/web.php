@@ -29,3 +29,4 @@ Route::group(['prefix' => 'contas', 'middleware' => 'auth'], function () {
     });
 
 });
+
