@@ -29,6 +29,7 @@
                 </div>
 
                 <ul class="list-unstyled components">
+                    <p>Dummy Heading</p>
                     <li class="active">
                         <a href="#">Dashboard</a>
                     </li>

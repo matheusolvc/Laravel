@@ -1,4 +1,5 @@
-@extends('welcome')
+@extends('menu')
+@section('title', 'Dashboard')
 @section('body-content')
 <div class="row">
     <div class="col-sm-6 div-card">

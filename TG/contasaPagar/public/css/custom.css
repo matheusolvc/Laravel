@@ -83,13 +83,13 @@ a:focus {
 }
 
 #sidebar ul.components {
-    padding: 20px 0;
+    padding: 0;
     border-bottom: 1px solid #47748b;
 }
 
-#sidebar ul p {
-    color: #fff;
-    padding: 10px;
+.user-name {
+    padding: 10px 5px;
+    margin: 0;
 }
 
 #sidebar ul li a {

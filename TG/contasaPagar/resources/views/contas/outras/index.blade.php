@@ -1,4 +1,5 @@
-@extends('welcome')
+@extends('menu')
+@section('title', 'Outra')
 @section('body-content')
 <div class="row">
     <div class="col-sm-12 div-card">
@@ -8,6 +9,7 @@
                 <table class="table table-hover">
                     <thead class="thead-light">
                         <tr>
+                            <th scope="col">Sel.</th>
                             <th scope="col">Nº</th>
                             <th scope="col">Dt. Emissão</th>
                             <th scope="col">Dt. Vencimento</th>
@@ -22,6 +24,7 @@
                     </thead>
                     <tbody>
                         <tr>
+                            <th scope="row">1</th>
                             <th scope="row">1</th>
                             <td>01/11/2019</td>
                             <td>15/11/2019</td>

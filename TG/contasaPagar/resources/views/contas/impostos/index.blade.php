@@ -1,4 +1,5 @@
-@extends('welcome')
+@extends('menu')
+@section('title', 'Impostos')
 @section('body-content')
 <div class="row">
     <div class="col-sm-12 div-card">
