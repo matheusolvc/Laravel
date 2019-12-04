@@ -24,9 +24,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        if (Auth::user()->role() != 'S' && Auth::user()->role() != 'F')
-            abort(403, 'Usuário não possui acesso a esse recurso.');
-
         return view('dashboard.dashboard');
     }
 }
