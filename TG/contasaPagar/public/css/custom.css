@@ -250,16 +250,24 @@ a.article:hover {
 }
 
 .fa-trash-alt,
-.fa-edit {
+.fa-edit,
+.fa-check,
+.fa-ban {
     cursor: pointer;
 }
 
-.fa-trash-alt {
+.fa-trash-alt,
+.fa-ban {
     color: #f44336;
 }
 
-.fa-edit {
+.fa-edit,
+.fa-external-link-alt {
     color: #2196f3;
+}
+
+.fa-check {
+    color: green;
 }
 
 .table-title {
