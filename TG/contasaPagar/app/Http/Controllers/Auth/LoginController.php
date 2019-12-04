@@ -36,4 +36,12 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    public function usuarios()
+    {
+        if (Auth::user()->role() != 'S')
+            abort(403, 'Usuário não possui acesso a esse recurso.');
+
+        return view('usuarios.index');
+    }
 }

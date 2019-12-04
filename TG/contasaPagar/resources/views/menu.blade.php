@@ -25,7 +25,7 @@
             <!-- Sidebar  -->
             <nav id="sidebar">
                 <div class="sidebar-header">
-                    <h3>TGCP</h3>
+                <h3>{{ config('app.name', 'Laravel') }}</h3>
                 </div>
                 <p class="user-name">{{ Auth::user()->name }}</p>
                 <ul class="list-unstyled components">
@@ -78,7 +78,12 @@
                             </li>
                         </ul>
                     </li>
+                    <li>
+                        <a href="{{ url('/usuarios') }}">Usuários</a>
+                    </li>
                 </ul>
+
+
 
                 <ul class="list-unstyled CTAs">
 

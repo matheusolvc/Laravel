@@ -9,10 +9,11 @@ Route::group(['middleware' => 'auth'], function() {
 
     Route::get('/logout', 'Auth\LoginController@logout');
 
+    Route::get('/usuarios', 'Auth\LoginController@usuarios');
+
 });
 
 Route::group(['prefix' => 'contas', 'middleware' => 'auth'], function () {
-
     Route::group(['prefix' => 'boletos'], function () {
         Route::get('', ['as' => 'contas.boletos.index', 'uses' => 'Contas\ContasController@boletos']);
         Route::get('create', ['as' => 'contas.boletos.create', 'uses' => 'Contas\ContasController@create']);

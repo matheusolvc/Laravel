@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Contas;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ContasController extends Controller
 {
@@ -19,6 +20,9 @@ class ContasController extends Controller
 
     public function boletos()
     {
+        if (Auth::user()->role() != 'S' && Auth::user()->role() != 'F')
+            abort(403, 'Usuário não possui acesso a esse recurso.');
+
         return view('contas.boletos.index');
     }
 

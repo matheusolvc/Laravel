@@ -16,10 +16,10 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 
-        'email', 
-        'tipo_usuario', 
-        'matricula', 
+        'name',
+        'email',
+        'tipo_usuario',
+        'matricula',
         'password'
     ];
 
@@ -40,4 +40,10 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function Role()
+    {
+        return $this->tipo_usuario;
+
+    }
 }
