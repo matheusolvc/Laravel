@@ -65,7 +65,6 @@
                 {{-- https://appdividend.com/2018/02/23/laravel-pagination-example-tutorial/ --}}
                 <nav aria-label="pages" class="button-left">
                     {!! $boletos->links() !!}
-                    {{ $boletos->appends(['sort' => 'valor_documento'])->links() }}
                 </nav>
                 <a href="{{route('contas.boletos.create') }}" class="btn btn-success button-right btn-new">Novo</a>
             </div>
