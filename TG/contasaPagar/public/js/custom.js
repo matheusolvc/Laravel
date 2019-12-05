@@ -31,9 +31,9 @@ var ctx = document.getElementById("myChart");
 var myChart = new Chart(ctx, {
     type: 'line',
     data: {
-        labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+        labels: ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"],
         datasets: [{
-            data: [15339, 21345, 18483, 24003, 23489, 24092, 12034],
+            data: [1533, 2134, 1848, 2400, 2348, 2409, 1203],
             lineTension: 0,
             backgroundColor: 'transparent',
             borderColor: '#007bff',
