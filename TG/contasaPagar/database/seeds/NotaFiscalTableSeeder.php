@@ -11,6 +11,6 @@ class NotaFiscalTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(\App\Models\Conta::class, 10)->state('notaFiscal')->create();
+        factory(\App\Models\Conta::class, 5)->state('notaFiscal')->create();
     }
 }

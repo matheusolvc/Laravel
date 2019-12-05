@@ -51,7 +51,7 @@
                             <a href="{{ URL::to('contas/outras') }}">Outras</a>
                         </li>
                         <li>
-                            <a href="#">Migrar NF</a>
+                            <a href="{{ URL::to('contas/notas-ficais') }}">Notas Fiscais</a>
                         </li>
                     </ul>
                 </li>

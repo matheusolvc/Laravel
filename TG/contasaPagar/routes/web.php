@@ -34,6 +34,25 @@ Route::group(['middleware' => 'auth'], function() {
                 Route::get('destroy/{id}', ['as' => 'contas.outras.destroy', 'uses' => 'OutrasController@destroy']);
             });
 
+            Route::group(['prefix' => 'notas-fiscais', 'namespace' => 'Contas'], function () {
+                Route::get('', ['as' => 'contas.notas-fiscais.index', 'uses' => 'NotaFiscalController@index']);
+                Route::get('edit/{id}', ['as' => 'contas.notas-fiscais.edit', 'uses' => 'NotaFiscalController@edit']);
+                Route::put('update/{id}', ['as' => 'contas.notas-fiscais.update', 'uses' => 'NotaFiscalController@update']);
+                Route::get('destroy/{id}', ['as' => 'contas.notas-fiscais.destroy', 'uses' => 'NotaFiscalController@destroy']);
+                Route::get('migrar', ['as' => 'contas.notas-fiscais.migrar', 'uses' => 'NotaFiscalController@migrar']);
+            });
+
+            Route::group(['prefix' => 'renegociacoes', 'namespace' => 'Renegociacao'], function() {
+                Route::get('', ['as' => 'renegociacoes.index', 'uses' => 'RenegociacaoController@index']);
+                Route::get('create', ['as' => 'renegociacoes.create', 'uses' => 'RenegociacaoController@create']);
+                Route::post('store', ['as' => 'renegociacoes.store', 'uses' => 'RenegociacaoController@store']);
+                Route::get('edit/{id}', ['as' => 'renegociacoes.edit', 'uses' => 'RenegociacaoController@edit']);
+                Route::put('update/{id}', ['as' => 'renegociacoes.update', 'uses' => 'RenegociacaoController@update']);
+                Route::get('destroy/{id}', ['as' => 'renegociacoes.destroy', 'uses' => 'RenegociacaoController@destroy']);
+                Route::get('destroyConta/{id}/{id_conta}', ['as' => 'renegociacoes.destroyConta', 'uses' => 'RenegociacaoController@destroyConta']);
+                Route::get('processar/{id}', ['as' => 'renegociacoes.processar', 'uses' => 'RenegociacaoController@processar']);
+            });
+
         });
 
         Route::group(['prefix' => 'reembolso', 'namespace' => 'Reembolso'], function () {
