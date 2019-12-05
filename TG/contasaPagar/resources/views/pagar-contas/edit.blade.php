@@ -8,7 +8,6 @@
                 <h5 class="card-title table-title">Editar Remessa</h5>
                 @include('pagar-contas._form')
 
-                <br>
                 <h5 class="card-title table-title">Contas á adicionar</h5>
                 <div class="table-responsive">
                 <table class="table table-hover">
@@ -32,8 +31,8 @@
                                 <input type="checkbox" class="chk" value="{{ $conta->id }}">
                             </th>
                             <th scope="row">{{$conta->id}}</th>
-                            <td>{{$conta->dt_emissao}}</td>
-                            <td>{{$conta->dt_vencimento}}</td>
+                            <td>{{date('d/m/Y', strtotime($conta->dt_emissao))}}</td>
+                            <td>{{date('d/m/Y', strtotime($conta->dt_vencimento))}}</td>
                             <td>{{$conta->status == 'A' ? 'Pendente' : 'Pago'}}</td>
                             <td>{{$conta->valor_documento}}</td>
                             <td>{{$conta->juros}}</td>

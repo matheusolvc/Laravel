@@ -1,6 +1,6 @@
     <div class="form-row">
         <div class="form-group col-md-4">
-            {!! Form::label('ID', 'Cód. Boleto') !!}
+            {!! Form::label('ID', 'Cód. Conta') !!}
             {!! Form::text('id', null, ['id' => 'id', 'class' => 'form-control', 'placeholder' => '0000', 'disabled' => true]) !!}
         </div>
         <div class="form-group col-md-4">

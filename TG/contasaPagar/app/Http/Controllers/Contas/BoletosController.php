@@ -47,8 +47,8 @@ class BoletosController extends Controller
         $boleto->num_doc = $request->num_doc;
         $boleto->codigo_barras = $request->codigo_barras;
         $boleto->id_fornecedor = $request->id_fornecedor;
-        $boleto->dt_emissao = $request->dt_emissao;
-        $boleto->dt_vencimento = $request->dt_vencimento;
+        $boleto->dt_emissao = date('Y-m-d', strtotime($request->dt_emissao));
+        $boleto->dt_vencimento = date('Y-m-d', strtotime($request->dt_vencimento));
         $boleto->valor_documento = $request->valor_documento;
         $boleto->multa = $request->multa;
         $boleto->juros = $request->juros;
@@ -69,8 +69,10 @@ class BoletosController extends Controller
     public function edit($id)
     {
         $boleto = Conta::FindOrFail($id);
-        $fornecedores = Fornecedor::pluck('razao_social', 'id');
+        $boleto->dt_emissao = date('d/m/Y', strtotime($boleto->dt_emissao));
+        $boleto->dt_vencimento = date('d/m/Y', strtotime($boleto->dt_vencimento));
 
+        $fornecedores = Fornecedor::pluck('razao_social', 'id');
 
         return view('contas.boletos.edit', compact('boleto', 'fornecedores'));
     }
@@ -87,8 +89,8 @@ class BoletosController extends Controller
         $boleto = Conta::FindOrFail($id);
         $boleto->codigo_barras = $request->codigo_barras;
         $boleto->id_fornecedor = $request->id_fornecedor;
-        $boleto->dt_emissao = $request->dt_emissao;
-        $boleto->dt_vencimento = $request->dt_vencimento;
+        $boleto->dt_emissao = date('Y-m-d', strtotime($request->dt_emissao));
+        $boleto->dt_vencimento = date('Y-m-d', strtotime($request->dt_vencimento));
         $boleto->valor_documento = $request->valor_documento;
         $boleto->multa = $request->multa;
         $boleto->juros = $request->juros;

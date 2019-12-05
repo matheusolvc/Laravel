@@ -10,7 +10,6 @@
                     <table class="table table-hover">
                         <thead class="thead-light">
                             <tr>
-                                <th scope="col">Sel.</th>
                                 <th scope="col">Nº</th>
                                 <th scope="col">Dt. Emissão</th>
                                 <th scope="col">Dt. Vencimento</th>
@@ -24,39 +23,40 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($outrasContas as $outras)
+                            @foreach ($outrasContas as $outra)
                             <tr>
-                                <th scope="row">
-                                    <input type="checkbox" class="chk">
-                                </th>
-                                <th scope="row">{{$outras->id}}</th>
-                                <td>{{$outras->dt_emissao}}</td>
-                                <td>{{$outras->dt_vencimento}}</td>
-                                <td>{{$outras->status == 'A' ? 'Pendente' : 'Pago'}}</td>
-                                <td>{{$outras->valor_documento}}</td>
-                                <td>{{$outras->juros}}</td>
-                                <td>{{$outras->multa}}</td>
-                                <td>{{$outras->juros + $outras->valor_documento + $outras->multa}}</td>
-                                @if($outras->dt_pagamento != null || $outras->dt_pagamento != '')
-                                <td>{{$outras->dt_pagamento}}</td>
+                                <th scope="row">{{$outra->id}}</th>
+                                <td>{{date('d/m/Y', strtotime($outra->dt_emissao))}}</td>
+                                <td>{{date('d/m/Y', strtotime($outra->dt_vencimento))}}</td>
+                                <td>{{$outra->status == 'A' ? 'Pendente' : 'Pago'}}</td>
+                                <td>{{$outra->valor_documento}}</td>
+                                <td>{{$outra->juros}}</td>
+                                <td>{{$outra->multa}}</td>
+                                <td>{{$outra->juros + $outra->valor_documento + $outra->multa}}</td>
+                                @if($outra->dt_pagamento != null || $outra->dt_pagamento != '')
+                                <td>{{date('d/m/Y', strtotime($outra->dt_pagamento))}}</td>
                                 @else
                                 <td style="text-align:center">-</td>
                                 @endif
                                 <td class="action-icons">
-                                    <a
-                                        href="{{ route('contas.pagar', ['id'=>$outras->id, 'redirect'=>'contas.outras.index']) }}">
-                                        <i class="fas fa-money-bill-wave" data-toggle="tooltip" data-placement="top"
-                                            title="Pagar"></i>
-                                    </a>
-                                    <a href="{{ route('contas.outras.destroy', ['id'=>$outras->id]) }}"
-                                        onclick="return confirm('Deseja excluir o registro ?')">
-                                        <i class="fas fa-trash-alt" data-toggle="tooltip" data-placement="top"
-                                            title="Excluir"></i>
-                                    </a>
-                                    <a href="{{ route('contas.outras.edit', ['id'=>$outras->id]) }}">
-                                        <i class="far fa-edit" data-toggle="tooltip" data-placement="top"
-                                            title="Editar"></i>
-                                    </a>
+                                    @if($outra->status == 'A')
+                                        @if(Auth::user()->tipo_usuario == 'G')
+                                            <a
+                                                href="{{ route('contas.pagar', ['id'=>$outra->id, 'redirect'=>'contas.outras.index']) }}">
+                                                <i class="fas fa-money-bill-wave" data-toggle="tooltip" data-placement="top"
+                                                    title="Pagar"></i>
+                                            </a>
+                                        @endif
+                                        <a href="{{ route('contas.outras.destroy', ['id'=>$outra->id]) }}"
+                                            onclick="return confirm('Deseja excluir o registro ?')">
+                                            <i class="fas fa-trash-alt" data-toggle="tooltip" data-placement="top"
+                                                title="Excluir"></i>
+                                        </a>
+                                        <a href="{{ route('contas.outras.edit', ['id'=>$outra->id]) }}">
+                                            <i class="far fa-edit" data-toggle="tooltip" data-placement="top"
+                                                title="Editar"></i>
+                                        </a>
+                                    @endif
                                 </td>
                             </tr>
                             @endforeach

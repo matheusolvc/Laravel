@@ -46,8 +46,8 @@ class OutrasController extends Controller
         $outrasContas->status = 'A';
         $outrasContas->num_doc = $request->num_doc;
         $outrasContas->id_fornecedor = $request->id_fornecedor;
-        $outrasContas->dt_emissao = $request->dt_emissao;
-        $outrasContas->dt_vencimento = $request->dt_vencimento;
+        $outrasContas->dt_emissao = date('Y-m-d', strtotime($request->dt_emissao));
+        $outrasContas->dt_vencimento = date('Y-m-d', strtotime($request->dt_vencimento));
         $outrasContas->valor_documento = $request->valor_documento;
         $outrasContas->multa = $request->multa;
         $outrasContas->juros = $request->juros;
@@ -59,30 +59,14 @@ class OutrasController extends Controller
             ->with('message', 'Conta criada com sucesso.');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
-        $outrasContas = Conta::FindOrFail($id);
+        $outraConta = Conta::FindOrFail($id);
+        $outraConta->dt_emissao = date('d/m/Y', strtotime($outraConta->dt_emissao));
+        $outraConta->dt_vencimento = date('d/m/Y', strtotime($outraConta->dt_vencimento));
         $fornecedores = Fornecedor::pluck('razao_social', 'id');
 
-
-        return view('contas.outras.edit', compact('outrasContas', 'fornecedores'));
+        return view('contas.outras.edit', compact('outraConta', 'fornecedores'));
     }
 
     /**
@@ -96,8 +80,8 @@ class OutrasController extends Controller
     {
         $outrasContas = Conta::FindOrFail($id);
         $outrasContas->id_fornecedor = $request->id_fornecedor;
-        $outrasContas->dt_emissao = $request->dt_emissao;
-        $outrasContas->dt_vencimento = $request->dt_vencimento;
+        $outrasContas->dt_emissao = date('Y-m-d', strtotime($request->dt_emissao));
+        $outrasContas->dt_vencimento = date('Y-m-d', strtotime($request->dt_vencimento));
         $outrasContas->valor_documento = $request->valor_documento;
         $outrasContas->multa = $request->multa;
         $outrasContas->juros = $request->juros;

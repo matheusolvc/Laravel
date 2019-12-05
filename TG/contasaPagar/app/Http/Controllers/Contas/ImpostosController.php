@@ -47,8 +47,8 @@ class ImpostosController extends Controller
         $imposto->codigo_barras = $request->codigo_barras;
         $imposto->periodo_apuracao = $request->periodo_apuracao;
         $imposto->cnpj_matriz = $request->cnpj_matriz;
-        $imposto->dt_emissao = $request->dt_emissao;
-        $imposto->dt_vencimento = $request->dt_vencimento;
+        $imposto->dt_emissao = date('Y-m-d', strtotime($request->dt_emissao));
+        $imposto->dt_vencimento = date('Y-m-d', strtotime($request->dt_vencimento));
         $imposto->valor_documento = $request->valor_documento;
         $imposto->multa = $request->multa;
         $imposto->juros = $request->juros;
@@ -60,26 +60,12 @@ class ImpostosController extends Controller
             ->with('message', 'imposto criado com sucesso.');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         $imposto = Conta::FindOrFail($id);
+        $imposto->dt_emissao = date('d/m/Y', strtotime($imposto->dt_emissao));
+        $imposto->dt_vencimento = date('d/m/Y', strtotime($imposto->dt_vencimento));
+
         return view('contas.impostos.edit', compact('imposto'));
     }
 
@@ -97,8 +83,8 @@ class ImpostosController extends Controller
         $imposto->periodo_apuracao = $request->periodo_apuracao;
         $imposto->cnpj_matriz = $request->cnpj_matriz;
         $imposto->id_fornecedor = $request->id_fornecedor;
-        $imposto->dt_emissao = $request->dt_emissao;
-        $imposto->dt_vencimento = $request->dt_vencimento;
+        $imposto->dt_emissao = date('Y-m-d', strtotime($request->dt_emissao));
+        $imposto->dt_vencimento = date('Y-m-d', strtotime($request->dt_vencimento));
         $imposto->valor_documento = $request->valor_documento;
         $imposto->multa = $request->multa;
         $imposto->juros = $request->juros;

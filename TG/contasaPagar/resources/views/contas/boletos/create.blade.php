@@ -5,7 +5,7 @@
     <div class="col-sm-12 div-card">
         <div class="card card-dashboard">
             <div class="card-body">
-                <h5 class="card-title">Boletos</h5>
+                <h5 class="card-title">Cadastrar Boleto</h5>
                 {!! Form::open(['route'=>'contas.boletos.store', 'method'=>'post', 'enctype'=> 'multipart/form-data'])
                 !!}
                     @section('form-complement')

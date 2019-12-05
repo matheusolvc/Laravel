@@ -5,7 +5,7 @@
     <div class="col-sm-12 div-card">
         <div class="card card-dashboard">
             <div class="card-body">
-                <h5 class="card-title">Impostos</h5>
+                <h5 class="card-title">Editar Imposto</h5>
                 {!! Form::model($imposto, ['route'=>['contas.impostos.update', $imposto->id], 'method'=>'put',
                 'enctype'=> 'multipart/form-data']) !!}
                       @section('form-complement')

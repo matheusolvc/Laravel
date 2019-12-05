@@ -5,8 +5,8 @@
     <div class="col-sm-12 div-card">
         <div class="card card-dashboard">
             <div class="card-body">
-                <h5 class="card-title">Outras contas</h5>
-                {!! Form::model($outrasContas, ['route'=>['contas.outras.update', $outrasContas->id], 'method'=>'put',
+                <h5 class="card-title table-title">Editar Outra conta</h5>
+                {!! Form::model($outraConta, ['route'=>['contas.outras.update', $outraConta->id], 'method'=>'put',
                 'enctype'=> 'multipart/form-data']) !!}
                      @section('form-complement')
                         <div class="form-group col-md-6">

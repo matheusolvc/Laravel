@@ -1,5 +1,5 @@
 @extends('menu')
-@section('title', 'notaFiscals')
+@section('title', 'Notas Fiscais')
 @section('body-content')
 <div class="row">
     <div class="col-sm-12 div-card">
@@ -30,31 +30,33 @@
                             @foreach ($notasFiscais as $notaFiscal)
                             <tr>
                                 <th scope="row">{{$notaFiscal->id}}</th>
-                                <td>{{$notaFiscal->dt_emissao}}</td>
-                                <td>{{$notaFiscal->dt_vencimento}}</td>
+                                <td>{{date('d/m/Y', strtotime($notaFiscal->dt_emissao))}}</td>
+                                <td>{{date('d/m/y', strtotime($notaFiscal->dt_vencimento))}}</td>
                                 <td>{{$notaFiscal->status == 'A' ? 'Pendente' : 'Pago'}}</td>
                                 <td>{{$notaFiscal->valor_documento}}</td>
                                 <td>{{$notaFiscal->juros}}</td>
                                 <td>{{$notaFiscal->multa}}</td>
                                 <td>{{$notaFiscal->juros + $notaFiscal->valor_documento + $notaFiscal->multa}}</td>
                                 @if($notaFiscal->dt_pagamento != null || $notaFiscal->dt_pagamento != '')
-                                <td>{{$notaFiscal->dt_pagamento}}</td>
+                                    <td>{{date('d/m/y', strtotime($notaFiscal->dt_pagamento))}}</td>
                                 @else
-                                <td style="text-align:center">-</td>
+                                    <td style="text-align:center">-</td>
                                 @endif
                                 <td class="action-icons">
-                                    <a href="{{ route('contas.pagar', ['id'=>$notaFiscal->id, 'redirect'=>'contas.notas-ficais.index']) }}">
-                                        <i class="fas fa-money-bill-wave" data-toggle="tooltip" data-placement="top"
-                                            title="Pagar"></i>
-                                    </a>
-                                    <a href="{{ route('contas.notas-fiscais.destroy', ['id'=>$notaFiscal->id]) }}" onclick="return confirm('Deseja excluir o registro ?')">
-                                        <i class="fas fa-trash-alt" data-toggle="tooltip" data-placement="top"
-                                            title="Excluir"></i>
-                                    </a>
-                                    <a href="{{ route('contas.notas-fiscais.edit', ['id'=>$notaFiscal->id]) }}">
-                                        <i class="far fa-edit" data-toggle="tooltip" data-placement="top"
-                                            title="Editar"></i>
-                                    </a>
+                                    @if($notaFiscal->status == 'A')
+                                        <a href="{{ route('contas.pagar', ['id'=>$notaFiscal->id, 'redirect'=>'contas.notas-fiscais.index']) }}">
+                                            <i class="fas fa-money-bill-wave" data-toggle="tooltip" data-placement="top"
+                                                title="Pagar"></i>
+                                        </a>
+                                        <a href="{{ route('contas.notas-fiscais.destroy', ['id'=>$notaFiscal->id]) }}" onclick="return confirm('Deseja excluir o registro ?')">
+                                            <i class="fas fa-trash-alt" data-toggle="tooltip" data-placement="top"
+                                                title="Excluir"></i>
+                                        </a>
+                                        <a href="{{ route('contas.notas-fiscais.edit', ['id'=>$notaFiscal->id]) }}">
+                                            <i class="far fa-edit" data-toggle="tooltip" data-placement="top"
+                                                title="Editar"></i>
+                                        </a>
+                                    @endif
                                 </td>
                             </tr>
                             @endforeach

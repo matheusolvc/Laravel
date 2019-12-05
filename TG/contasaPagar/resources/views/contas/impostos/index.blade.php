@@ -10,7 +10,6 @@
                 <table class="table table-hover">
                     <thead class="thead-light">
                         <tr>
-                            <th scope="col">Sel.</th>
                             <th scope="col">Nº</th>
                             <th scope="col">Dt. Emissão</th>
                             <th scope="col">Dt. Vencimento</th>
@@ -26,36 +25,36 @@
                     <tbody>
                         @foreach ($impostos as $imposto)
                         <tr>
-                            <th scope="row">
-                                <input type="checkbox" class="chk">
-                            </th>
                             <th scope="row">{{$imposto->id}}</th>
-                            <td>{{$imposto->dt_emissao}}</td>
-                            <td>{{$imposto->dt_vencimento}}</td>
+                            <td>{{date('d/m/Y', strtotime($imposto->dt_emissao))}}</td>
+                            <td>{{date('d/m/Y', strtotime($imposto->dt_vencimento))}}</td>
                             <td>{{$imposto->status == 'A' ? 'Pendente' : 'Pago'}}</td>
                             <td>{{$imposto->valor_documento}}</td>
                             <td>{{$imposto->juros}}</td>
                             <td>{{$imposto->multa}}</td>
                             <td>{{$imposto->juros + $imposto->valor_documento + $imposto->multa}}</td>
                             @if($imposto->dt_pagamento != null || $imposto->dt_pagamento != '')
-                            <td>{{$imposto->dt_pagamento}}</td>
+                            <td>{{date('d/m/Y', strtotime($imposto->dt_pagamento))}}</td>
                             @else
                             <td style="text-align:center">-</td>
                             @endif
                             <td class="action-icons">
-
-                                <a href="{{ route('contas.pagar', ['id'=>$imposto->id, 'redirect'=>'contas.impostos.index']) }}">
-                                    <i class="fas fa-money-bill-wave" data-toggle="tooltip" data-placement="top"
-                                        title="Pagar"></i>
-                                </a>
-                                <a href="{{ route('contas.impostos.destroy', ['id'=>$imposto->id]) }}" onclick="return confirm('Deseja excluir o registro ?')">
-                                    <i class="fas fa-trash-alt" data-toggle="tooltip" data-placement="top"
-                                        title="Excluir"></i>
-                                </a>
-                                <a href="{{ route('contas.impostos.edit', ['id'=>$imposto->id]) }}">
-                                    <i class="far fa-edit" data-toggle="tooltip" data-placement="top"
-                                        title="Editar"></i>
-                                </a>
+                                @if($imposto->status == 'A')
+                                    @if(Auth::user()->tipo_usuario == 'G')
+                                        <a href="{{ route('contas.pagar', ['id'=>$imposto->id, 'redirect'=>'contas.impostos.index']) }}">
+                                            <i class="fas fa-money-bill-wave" data-toggle="tooltip" data-placement="top"
+                                                title="Pagar"></i>
+                                        </a>
+                                    @endif
+                                    <a href="{{ route('contas.impostos.destroy', ['id'=>$imposto->id]) }}" onclick="return confirm('Deseja excluir o registro ?')">
+                                        <i class="fas fa-trash-alt" data-toggle="tooltip" data-placement="top"
+                                            title="Excluir"></i>
+                                    </a>
+                                    <a href="{{ route('contas.impostos.edit', ['id'=>$imposto->id]) }}">
+                                        <i class="far fa-edit" data-toggle="tooltip" data-placement="top"
+                                            title="Editar"></i>
+                                    </a>
+                                @endif
                             </td>
                         </tr>
                         @endforeach

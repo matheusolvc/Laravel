@@ -1,5 +1,5 @@
 @extends('menu')
-@section('title', 'Migrar NFs')
+@section('title', 'Notas Fiscais')
 @section('body-content')
 <div class="row">
     <div class="col-sm-12 div-card">
