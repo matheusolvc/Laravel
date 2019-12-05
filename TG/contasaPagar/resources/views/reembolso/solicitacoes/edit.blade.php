@@ -6,7 +6,7 @@
         <div class="card card-dashboard">
             <div class="card-body">
                 <h5 class="card-title">Solicitações</h5>
-                {!! Form::model($reembolsos, ['route'=>['reembolsos.update', $reembolsos->id], 'method'=>'put',
+                {!! Form::model($reembolso, ['route'=>['reembolso.update', $reembolso->id], 'method'=>'put',
                 'enctype'=> 'multipart/form-data']) !!}
 
                 @include('reembolso.solicitacoes._form')

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Conta;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Carbon;
 
 class ReembolsoController extends Controller
 {
@@ -17,7 +18,7 @@ class ReembolsoController extends Controller
     public function index()
     {
         // $reembolsos  = Conta::where('tipo_conta', '=', 'R')->paginate(7);
-        // return view('contas.boletos.index', compact('reembolsos'));
+        // return view('contas.reembolso.index', compact('reembolsos'));
     }
 
     /**
@@ -39,33 +40,32 @@ class ReembolsoController extends Controller
     public function store(Request $request)
     {
 
-        if ($request->hasFile('anexo')) {
-            $image = $request->file('anexo');
-            $name = 'grupo' . $grupos->id_grupo . '.' . $image->getClientOriginalExtension();
-            $destinationPath = base_path('public/images/grupos');
-            $image->move($destinationPath, $name);
+        $reembolso = new Conta();
+        $reembolso->tipo_conta = 'R';
+        $reembolso->status = 'Pendente';
+        $reembolso->num_doc = '0';
+        $reembolso->dt_emissao = Carbon::now();
+        $reembolso->multa = 0;
+        $reembolso->juros = 0;
+        $reembolso->dt_recibo = $request->dt_recibo;
+        $reembolso->valor_documento = $request->valor_documento;
+        $reembolso->descricao = $request->descricao;
+        $reembolso->dt_criacao = Carbon::now();
+        $reembolso->id_usuario = Auth::user()->id;
 
-            $grupos->img = asset('images/grupos') . '/' . $name;
-        }
+        // if ($request->hasFile('anexo')) {
+        //     $image = $request->file('anexo');
+        //     $name = Auth::user()->id.'_' . $reembolso->id_grupo . '.' . $image->getClientOriginalExtension();
+        //     $destinationPath = base_path('public/files/reembolsos');
+        //     $image->move($destinationPath, $name);
 
+        //     $reembolso->img = asset('files/reembolsos') . '/' . $name;
+        // }
 
-        $boleto = new Conta();
-        $boleto->tipo_conta = 'B';
-        $boleto->status = 'A';
-        $boleto->num_doc = $request->num_doc;
-        $boleto->codigo_barras = $request->codigo_barras;
-        $boleto->id_fornecedor = $request->id_fornecedor;
-        $boleto->dt_emissao = $request->dt_emissao;
-        $boleto->dt_vencimento = $request->dt_vencimento;
-        $boleto->valor_documento = $request->valor_documento;
-        $boleto->multa = $request->multa;
-        $boleto->juros = $request->juros;
-        $boleto->dt_criacao = Carbon::now();
-        $boleto->id_usuario = Auth::user()->id;
-        $boleto->save();
+        $reembolso->save();
 
-        return redirect('contas/boletos/create')
-            ->with('message', 'Boleto criado com sucesso.');
+        return redirect('reembolso/create')
+            ->with('message', 'reembolso criado com sucesso.');
     }
 
     /**
@@ -87,11 +87,8 @@ class ReembolsoController extends Controller
      */
     public function edit($id)
     {
-        $boleto = Conta::FindOrFail($id);
-        $fornecedores = Fornecedor::pluck('razao_social', 'id');
-
-
-        return view('contas.boletos.edit', compact('boleto', 'fornecedores'));
+        $reembolso = Conta::FindOrFail($id);
+        return view('reembolso.solicitacoes.edit', compact('reembolso'));
     }
 
     /**
@@ -103,20 +100,16 @@ class ReembolsoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $boleto = Conta::FindOrFail($id);
-        $boleto->codigo_barras = $request->codigo_barras;
-        $boleto->id_fornecedor = $request->id_fornecedor;
-        $boleto->dt_emissao = $request->dt_emissao;
-        $boleto->dt_vencimento = $request->dt_vencimento;
-        $boleto->valor_documento = $request->valor_documento;
-        $boleto->multa = $request->multa;
-        $boleto->juros = $request->juros;
-        $boleto->dt_alteracao = Carbon::now();
-        $boleto->id_usuario = Auth::user()->id;
-        $boleto->update();
+        $reembolso = Conta::FindOrFail($id);
+        $reembolso->dt_recibo = $request->dt_recibo;
+        $reembolso->valor_documento = $request->valor_documento;
+        $reembolso->descricao = $request->descricao;
+        $reembolso->dt_alteracao = Carbon::now();
+        $reembolso->id_usuario = Auth::user()->id;
+        $reembolso->update();
 
-        return redirect('/contas/boletos/edit/' . $id)
-            ->with('message', 'Boleto alterado com sucesso.');
+        return redirect('/reembolso/edit/' . $id)
+            ->with('message', 'reembolso alterado com sucesso.');
     }
 
     /**
@@ -127,11 +120,11 @@ class ReembolsoController extends Controller
      */
     public function destroy($id)
     {
-        $boleto = Conta::FindOrFail($id);
-        $boleto->delete();
+        $reembolso = Conta::FindOrFail($id);
+        $reembolso->delete();
 
-        return redirect('contas/boletos')
-            ->with('message', 'Boleto excluido com sucesso.');
+        return redirect('reembolso/solicitacoes')
+            ->with('message', 'reembolso excluido com sucesso.');
     }
 
     public function solicitacoes()

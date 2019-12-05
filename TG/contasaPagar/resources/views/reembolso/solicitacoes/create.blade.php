@@ -6,7 +6,7 @@
         <div class="card card-dashboard">
             <div class="card-body">
                 <h5 class="card-title">Solicitações</h5>
-                {!! Form::open(['route'=>'reembolso.create', 'method'=>'post', 'enctype'=> 'multipart/form-data'])
+                {!! Form::open(['route'=>'reembolso.store', 'method'=>'post', 'enctype'=> 'multipart/form-data'])
                 !!}
 
                 @include('reembolso.solicitacoes._form')
