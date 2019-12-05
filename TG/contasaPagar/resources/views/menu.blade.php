@@ -56,28 +56,16 @@
                         <a href="{{ route('pagar-conta.index') }}">Pagar contas</a>
                     </li>
                     @endif
-                    <li>
-                        <a href="#reembolsoSubmenu" data-toggle="collapse" aria-expanded="false"
-                            class="dropdown-toggle">Reembolsos</a>
-                        <ul class="collapse list-unstyled" id="reembolsoSubmenu">
-                            @if(Auth::user()->tipo_usuario != 'C')
-                                <li>
-                                    <a href="#">Aprovar reembolsos</a>
-                                </li>
-                            @endif
-                            <li>
-                                <a href="{{ URL::to('/reembolso/solicitacoes') }}">Solicitações</a>
-                            </li>
-                        </ul>
-                    </li>
+                        <li>
+                            <a href="{{ URL::to('/reembolso') }}">Reembolsos</a>
+                        </li>
+
                     @if(Auth::user()->tipo_usuario != 'C')
                         <li>
                             <a href="{{ url('/usuarios') }}">Usuários</a>
                         </li>
                     @endif
                 </ul>
-
-
 
                 <ul class="list-unstyled CTAs">
 
