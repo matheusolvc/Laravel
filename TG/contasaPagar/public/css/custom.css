@@ -20,9 +20,7 @@ td, th {
     text-align: center !important;
 }
 
-a,
-a:hover,
-a:focus {
+a, a:hover, a:focus {
     color: inherit;
     text-decoration: none;
     transition: all 0.3s;
@@ -49,7 +47,6 @@ a:focus {
     border-bottom: 1px dashed #ddd;
     margin: 40px 0;
 }
-
 
 /* ---------------------------------------------------
     SIDEBAR STYLE
@@ -109,8 +106,7 @@ a:focus {
     text-decoration: none;
 }
 
-#sidebar ul li.active>a,
-a[aria-expanded="true"] {
+#sidebar ul li.active>a, a[aria-expanded="true"] {
     color: #fff;
     background: #673bb7;
 }
@@ -151,12 +147,10 @@ a.download {
     color: #7386D5;
 }
 
-a.article,
-a.article:hover {
+a.article, a.article:hover {
     background: #6d7fcc !important;
     color: #fff !important;
 }
-
 
 /* ---------------------------------------------------
     CONTENT STYLE
@@ -180,7 +174,6 @@ a.article:hover {
 .body-content {
     padding: 5px 20px;
 }
-
 
 /* ---------------------------------------------------
     MEDIAQUERIES
@@ -246,7 +239,7 @@ a.article:hover {
     margin-bottom: 15px;
 }
 
-.div-user{
+.div-user {
     display: flex;
     align-items: center;
     align-content: center;
@@ -260,17 +253,11 @@ a.article:hover {
     align-content: center;
 }
 
-.fa-trash-alt,
-.fa-edit,
-.fa-check,
-.fa-ban,
-.fa-money-bill-wave,
-.fa-sync,
-.fa-user {
+.fa-trash-alt, .fa-edit, .fa-check, .fa-ban, .fa-money-bill-wave, .fa-sync, .fa-user {
     cursor: pointer;
 }
 
-.fa-user{
+.fa-user {
     margin: 0 5px;
     padding: 9px 10px;
     color: #999;
@@ -278,18 +265,16 @@ a.article:hover {
     border-radius: 25px;
 }
 
-.fa-trash-alt,
-.fa-ban {
+.fa-trash-alt, .fa-ban {
     color: #f44336;
 }
 
-.fa-edit,
-.fa-external-link-alt {
+.fa-edit, .fa-external-link-alt {
     color: #2196f3;
 }
 
 .fa-check, .fa-money-bill-wave, .fa-sync {
-    color: green;
+    color: #1ab350;
 }
 
 .table-title {
