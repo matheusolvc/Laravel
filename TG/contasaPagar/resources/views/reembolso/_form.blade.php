@@ -12,8 +12,8 @@
 </div>
 <div class="form-row">
     <div class="form-group col-md-6">
-        {!! Form::label('descricao', 'Descricao') !!}
-        {!! Form::textarea('descricao', null, ['maxlength' => '220','id'=>'text-ini',
+        {!! Form::label('descricao', 'Descrição') !!}
+        {!! Form::textarea('descricao', null, ['maxlength' => '220','id'=>'descricao',
         'rows'=>'3',
         'class'=>'form-control',
         'placeholder' =>'Texto...']) !!}
