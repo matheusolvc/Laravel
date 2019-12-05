@@ -48,7 +48,7 @@ class ReembolsoController extends Controller
             $grupos->img = asset('images/grupos') . '/' . $name;
         }
 
-        $grupos->save();
+
         $boleto = new Conta();
         $boleto->tipo_conta = 'B';
         $boleto->status = 'A';
