@@ -6,6 +6,7 @@
         <div class="card card-dashboard">
             <div class="card-body">
                 <h5 class="card-title table-title">Impostos</h5>
+                <div class="table-responsive">
                 <table class="table table-hover">
                     <thead class="thead-light">
                         <tr>
@@ -60,7 +61,7 @@
                         @endforeach
                     </tbody>
                 </table>
-
+                </div>
                 {{-- https://www.tutsmake.com/laravel-6-pagination-with-bootstrap-table-example/ --}}
                 {{-- https://appdividend.com/2018/02/23/laravel-pagination-example-tutorial/ --}}
                 <nav aria-label="pages" class="button-left">

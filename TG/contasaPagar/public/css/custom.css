@@ -16,6 +16,10 @@ p {
     color: #999;
 }
 
+td, th {
+    text-align: center !important;
+}
+
 a,
 a:hover,
 a:focus {
@@ -242,6 +246,13 @@ a.article:hover {
     margin-bottom: 15px;
 }
 
+.div-user{
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: flex-start;
+}
+
 .action-icons {
     display: flex;
     justify-content: space-between;
@@ -254,8 +265,17 @@ a.article:hover {
 .fa-check,
 .fa-ban,
 .fa-money-bill-wave,
-.fa-sync {
+.fa-sync,
+.fa-user {
     cursor: pointer;
+}
+
+.fa-user{
+    margin: 0 5px;
+    padding: 9px 10px;
+    color: #999;
+    border: 1px solid #999;
+    border-radius: 25px;
 }
 
 .fa-trash-alt,

@@ -10,6 +10,7 @@
 
                 <br>
                 <h5 class="card-title table-title">Contas á adicionar</h5>
+                <div class="table-responsive">
                 <table class="table table-hover">
                     <thead class="thead-light">
                         <tr>
@@ -41,7 +42,7 @@
                         @endforeach
                     </tbody>
                 </table>
-
+                </div>
                 {{-- https://www.tutsmake.com/laravel-6-pagination-with-bootstrap-table-example/ --}}
                 {{-- https://appdividend.com/2018/02/23/laravel-pagination-example-tutorial/ --}}
                 <nav class="col-md-12" aria-label="pages" class="button-left">
