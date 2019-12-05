@@ -41,6 +41,15 @@ class RenegociacaoController extends Controller
     public function store(Request $request)
     {
         $renegociacao = new Renegociacao();
+        $renegociacao->id_conta = $request->id_conta;
+        $renegociacao->id_usuario = Auth::user()->id;
+        $renegociacao->status = 'A';
+        $renegociacao->dt_solicitacao = Carbon::now();
+        $renegociacao->tipo_renegociacao = $request->tipo_renegociacao;
+        $renegociacao->qtde_parcelas = $request->qtde_parcelas;
+        $renegociacao->dt_vencimento = $request->dt_vencimento;
+        $renegociacao->valor = $request->valor;
+        $renegociacao->observacao = $request->observacao;
         $renegociacao->save();
 
         return redirect()->route()
