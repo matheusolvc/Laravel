@@ -37,7 +37,7 @@
                 <th scope="row">{{$lote_conta->id}}</th>
                 <td>{{$lote_conta->dt_emissao}}</td>
                 <td>{{$lote_conta->dt_vencimento}}</td>
-                <td>{{$lote_conta->status == 'A' ? 'À Pagar' : 'Pago'}}</td>
+                <td>{{$lote_conta->status == 'A' ? 'Pendente' : 'Pago'}}</td>
                 <td>{{$lote_conta->valor_documento}}</td>
                 <td>{{$lote_conta->juros}}</td>
                 <td>{{$lote_conta->multa}}</td>

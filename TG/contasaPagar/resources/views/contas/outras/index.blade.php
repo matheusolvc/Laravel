@@ -32,7 +32,7 @@
                             <th scope="row">{{$outras->id}}</th>
                             <td>{{$outras->dt_emissao}}</td>
                             <td>{{$outras->dt_vencimento}}</td>
-                            <td>{{$outras->status == 'A' ? 'À Pagar' : 'Pago'}}</td>
+                            <td>{{$outras->status == 'A' ? 'Pendente' : 'Pago'}}</td>
                             <td>{{$outras->valor_documento}}</td>
                             <td>{{$outras->juros}}</td>
                             <td>{{$outras->multa}}</td>

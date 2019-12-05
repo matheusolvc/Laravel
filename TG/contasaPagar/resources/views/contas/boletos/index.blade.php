@@ -32,7 +32,7 @@
                             <th scope="row">{{$boleto->id}}</th>
                             <td>{{$boleto->dt_emissao}}</td>
                             <td>{{$boleto->dt_vencimento}}</td>
-                            <td>{{$boleto->status == 'A' ? 'À Pagar' : 'Pago'}}</td>
+                            <td>{{$boleto->status == 'A' ? 'Pendente' : 'Pago'}}</td>
                             <td>{{$boleto->valor_documento}}</td>
                             <td>{{$boleto->juros}}</td>
                             <td>{{$boleto->multa}}</td>

@@ -9,7 +9,7 @@
                 {{-- TODO - Filtros --}}
                 {{-- END TODO --}}
 
-                <h5 class="card-title table-title">Remessas à processar</h5>
+                <h5 class="card-title table-title">Remessas pendentes</h5>
                 <div class="table-responsive">
                     <table class="table table-hover">
                         <thead class="thead-light">
@@ -32,7 +32,7 @@
                                 <td>{{ $lote->dt_alteracao == null ? '-' : date('d/m/Y', strtotime($lote->dt_alteracao)) }}
                                 </td>
                                 <td>{{ $lote->usuario->name }}</td>
-                                <td>{{ $lote->status == 'E' ? 'Em processamento' : $lote->status == 'A' ? 'À processar' : 'Finalizado'  }}
+                                <td>{{ $lote->status == 'E' ? 'Em processamento' : $lote->status == 'A' ? 'Pendente' : 'Finalizado'  }}
                                 </td>
                                 <td>{{ $lote->valor_lote }}</td>
                                 <td>{{ $lote->dt_transmissao == null ? '-' : date('d/m/Y', strtotime($lote->dt_transmissao)) }}

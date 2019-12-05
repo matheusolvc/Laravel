@@ -32,7 +32,7 @@
                             <th scope="row">{{$imposto->id}}</th>
                             <td>{{$imposto->dt_emissao}}</td>
                             <td>{{$imposto->dt_vencimento}}</td>
-                            <td>{{$imposto->status == 'A' ? 'À Pagar' : 'Pago'}}</td>
+                            <td>{{$imposto->status == 'A' ? 'Pendente' : 'Pago'}}</td>
                             <td>{{$imposto->valor_documento}}</td>
                             <td>{{$imposto->juros}}</td>
                             <td>{{$imposto->multa}}</td>
