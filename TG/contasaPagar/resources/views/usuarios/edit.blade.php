@@ -21,15 +21,15 @@
                             <label class="col-md-12">Tipo Usuário</label>
                             <div class="form-check form-check-inline">
                                 {!! Form::radio('tipo_usuario', 'G', ['id' => 'gerente', 'class'=> 'form-check-input',  ]) !!}
-                                {!! Form::label('gerente', 'Gerente') !!}
+                                {!! Form::label('gerente', 'Gerente', ['class' => 'form-check-label']) !!}
                             </div>
                             <div class="form-check form-check-inline">
                                 {!! Form::radio('tipo_usuario',  'A', ['id' => 'assitente', 'class'=> 'form-check-input',  ]) !!}
-                                {!! Form::label('assitente', 'Assistente') !!}
+                                {!! Form::label('assitente', 'Assistente', ['class' => 'form-check-label']) !!}
                             </div>
                             <div class="form-check form-check-inline">
                                 {!! Form::radio('tipo_usuario', 'C', ['id' => 'colaborador', 'class'=> 'form-check-input',  ]) !!}
-                                {!! Form::label('colaborador', 'Colaborador') !!}
+                                {!! Form::label('colaborador', 'Colaborador', ['class' => 'form-check-label']) !!}
                             </div>
                         </div>
                         <div class="form-group col-md-6">
