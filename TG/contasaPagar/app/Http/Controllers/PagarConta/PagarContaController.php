@@ -226,7 +226,7 @@ class PagarContaController extends Controller
         $lote->dt_transmissao = Carbon::now();
         $lote->update();
 
-        if($retorno_lote->status == 'P'){
+        if($retorno_lote->status == 'S'){
             return redirect()->route('pagar-conta.index')
                     ->with('message', 'Remessa processada com sucesso.');
         } else {

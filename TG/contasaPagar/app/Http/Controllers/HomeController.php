@@ -24,6 +24,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('dashboard.dashboard');
+        if(Auth::user()->tipo_usuario == 'C'){
+            return redirect()->route('reembolso.solicitacoes');
+        } else {
+            return view('dashboard.dashboard');
+        }
     }
 }

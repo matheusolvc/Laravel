@@ -41,6 +41,7 @@ class CreateContasTable extends Migration
             $table->date('dt_vencimento')->nullable();
             $table->date('dt_pagamento')->nullable();
             $table->date('dt_recibo')->nullable();
+            $table->text('arquivo')->nullable();
             $table->longText('descricao')->nullable();
             $table->double('valor_documento', 9,2);
             $table->double('multa', 9,2);

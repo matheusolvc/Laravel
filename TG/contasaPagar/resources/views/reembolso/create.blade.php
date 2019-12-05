@@ -6,12 +6,12 @@
         <div class="card card-dashboard">
             <div class="card-body">
                 <h5 class="card-title">Solicitações</h5>
-                {!! Form::model($reembolso, ['route'=>['reembolso.update', $reembolso->id], 'method'=>'put',
-                'enctype'=> 'multipart/form-data']) !!}
+                {!! Form::open(['route'=>'reembolso.store', 'method'=>'post', 'enctype'=> 'multipart/form-data'])
+                !!}
 
-                @include('reembolso.solicitacoes._form')
+                @include('reembolso._form')
                 <div class="form-group">
-                    <label for="anexo">Trocar arquivo</label>
+                    <label for="anexo">Anexo</label>
                     <input type="file" class="form-control-file" id="anexo">
                 </div>
                 <button type="submit" class="btn btn-primary">Salvar</button>

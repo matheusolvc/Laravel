@@ -17,8 +17,17 @@ class ReembolsoController extends Controller
      */
     public function index()
     {
-        // $reembolsos  = Conta::where('tipo_conta', '=', 'R')->paginate(7);
-        // return view('contas.reembolso.index', compact('reembolsos'));
+        if (Auth::user()->tipo_usuario == 'G' || Auth::user()->tipo_usuario == 'G') {
+            $reembolsos = Conta::where('tipo_conta', '=', 'R')
+                ->orderBy('status', 'asc')
+                ->paginate(7);
+        } else {
+            $reembolsos = Conta::where('tipo_conta', '=', 'R')
+                ->where('id_usuario', '=', Auth::user()->id)
+                ->paginate(7);
+        }
+
+        return view('reembolso.index', compact('reembolsos'));
     }
 
     /**
@@ -28,7 +37,7 @@ class ReembolsoController extends Controller
      */
     public function create()
     {
-        return view('reembolso.solicitacoes.create');
+        return view('reembolso.create');
     }
 
     /**
@@ -42,7 +51,7 @@ class ReembolsoController extends Controller
 
         $reembolso = new Conta();
         $reembolso->tipo_conta = 'R';
-        $reembolso->status = 'Pendente';
+        $reembolso->status = 'A';
         $reembolso->num_doc = '0';
         $reembolso->dt_emissao = Carbon::now();
         $reembolso->multa = 0;
@@ -88,7 +97,7 @@ class ReembolsoController extends Controller
     public function edit($id)
     {
         $reembolso = Conta::FindOrFail($id);
-        return view('reembolso.solicitacoes.edit', compact('reembolso'));
+        return view('reembolso.edit', compact('reembolso'));
     }
 
     /**
@@ -123,20 +132,20 @@ class ReembolsoController extends Controller
         $reembolso = Conta::FindOrFail($id);
         $reembolso->delete();
 
-        return redirect('reembolso/solicitacoes')
+        return redirect('reembolso')
             ->with('message', 'reembolso excluido com sucesso.');
     }
 
-    public function solicitacoes()
+    public function recusar($id)
     {
-        if (Auth::user()->tipo_usuario == 'G' || Auth::user()->tipo_usuario == 'G') {
-            $reembolsos = Conta::where('tipo_conta', '=', 'R')->paginate(7);
-        } else {
-            $reembolsos = Conta::where('tipo_conta', '=', 'R')
-                ->where('id_usuario', '=', Auth::user()->id)
-                ->paginate(7);
-        }
+        $reembolso = Conta::FindOrFail($id);
+        $reembolso->status = 'R';
+        $reembolso->dt_alteracao = Carbon::now();
+        $reembolso->dt_pagamento = null;
+        $reembolso->id_usuario = Auth::user()->id;
+        $reembolso->update();
 
-        return view('reembolso.solicitacoes.index', compact('reembolsos'));
+        return redirect('reembolso')
+            ->with('message', 'reembolso recusado com sucesso.');
     }
 }

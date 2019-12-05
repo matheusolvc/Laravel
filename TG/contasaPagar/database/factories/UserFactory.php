@@ -1,9 +1,10 @@
 <?php
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
-use App\User;
+use App\Models\User;
 use Faker\Generator as Faker;
 use Illuminate\Support\Str;
+use JansenFelipe\FakerBR\FakerBR;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,11 +18,28 @@ use Illuminate\Support\Str;
 */
 
 $factory->define(User::class, function (Faker $faker) {
+    $faker->addProvider(new FakerBR($faker));
+
     return [
         'name' => $faker->name,
+        'tipo_usuario' => 'C',
+        'matricula' => $faker->randomNumber($nbDigits = 5, $strict = false),
         'email' => $faker->unique()->safeEmail,
         'email_verified_at' => now(),
-        'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+        'password' => bcrypt('12345678'), // password
         'remember_token' => Str::random(10),
+    ];
+});
+
+$factory->state(\App\Models\User::class, 'gerente', function ($faker) {
+    return [
+        'tipo_usuario' => 'G',
+    ];
+});
+
+
+$factory->state(\App\Models\User::class, 'assistente', function ($faker) {
+    return [
+        'tipo_usuario' => 'A',
     ];
 });
