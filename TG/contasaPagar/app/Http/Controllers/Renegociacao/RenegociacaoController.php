@@ -5,6 +5,10 @@ namespace App\Http\Controllers\Renegociacao;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Renegociacao;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Conta;
+use App\Models\Caixa;
 
 class RenegociacaoController extends Controller
 {
@@ -15,8 +19,9 @@ class RenegociacaoController extends Controller
      */
     public function index()
     {
-        $renegociacoes  = Renegociacao::where('tipo_conta', '=', 'V')->paginate(7);
-        return view('contas.renegociacoes.index', compact('renegociacoes'));
+        $renegociacoes  = Conta::where('tipo_conta', '=', 'G')->paginate(7);
+
+        return view('contas.renegociacao.index', compact('renegociacoes'));
     }
 
     /**
@@ -47,12 +52,36 @@ class RenegociacaoController extends Controller
         $renegociacao->dt_solicitacao = Carbon::now();
         $renegociacao->tipo_renegociacao = $request->tipo_renegociacao;
         $renegociacao->qtde_parcelas = $request->qtde_parcelas;
-        $renegociacao->dt_vencimento = $request->dt_vencimento;
-        $renegociacao->valor = $request->valor;
+        $renegociacao->dt_vencimento = date('Y-m-d', strtotime($request->dt_vencimento));
+        $renegociacao->valor_novo = $request->valor_novo;
         $renegociacao->observacao = $request->observacao;
         $renegociacao->save();
+        $renegociacao->refresh();
 
-        return redirect()->route()
+        $conta = Conta::FindOrFail($request->id_conta);
+        $conta->status = 'E';
+        $conta->dt_alteracao = Carbon::now();
+        $conta->id_usuario = Auth::user()->id;
+        $conta->update();
+
+        $conta_nova = new Conta();
+        $conta_nova->status            = 'A';
+        $conta_nova->tipo_conta        = 'G';
+        $conta_nova->dt_criacao        = Carbon::now();
+        $conta_nova->dt_alteracao      = null;
+        $conta_nova->dt_emissao        = Carbon::now();
+        $conta_nova->dt_vencimento     = $renegociacao->dt_vencimento;
+        $conta_nova->dt_pagamento      = null;
+        $conta_nova->id_renegociacao   = $renegociacao->id;
+        $conta_nova->valor_documento   = $renegociacao->valor_novo;
+        $conta_nova->multa             = $conta->multa;
+        $conta_nova->juros             = $conta->juros;
+        $conta_nova->id_usuario        = Auth::user()->id;
+        $conta_nova->num_doc           = $conta->num_doc;
+        $conta_nova->serie             = null;
+        $conta_nova->save();
+
+        return redirect()->route('contas.renegociacao.index')
             ->with('message', 'Renegociação realizada com sucesso.');
     }
 

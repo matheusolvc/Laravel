@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Contas;
 use App\Models\Conta;
 use App\Models\Caixa;
+use App\Models\Renegociacao;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -37,6 +38,19 @@ class ContasController extends Controller
         $conta->dt_pagamento = Carbon::now();
         $conta->id_usuario = Auth::user()->id;
         $conta->update();
+
+        if($conta->id_renegociacao != null) {
+            $contas_renegociadas = Conta::where('id_renegociacao', '=', $conta->id_renegociacao)
+                ->where('status', '=', 1)
+                ->get();
+
+            if(count($contas_renegociadas == 0))
+            {
+                $renegociacao = Renegociacao::FindOrFail($conta->id_renegociacao);
+                $renegociacao->status = 'P';
+                $renegociacao->update();
+            }
+        }
 
         $caixa->saldo -= $conta->valor_documento;
         $caixa->update();

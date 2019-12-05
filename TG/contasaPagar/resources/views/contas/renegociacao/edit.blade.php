@@ -11,7 +11,7 @@
                 'enctype'=> 'multipart/form-data']) !!}
 
                 @include('contas.renegociacao._form')
-
+                <a href="{{ route('contas.renegociacao.index') }}" class="btn btn-link">Voltar</a>
                 {!! Form::close() !!}
             </div>
         </div>

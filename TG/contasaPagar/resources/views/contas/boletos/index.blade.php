@@ -28,7 +28,7 @@
                             <th scope="row">{{$boleto->id}}</th>
                             <td>{{date('d/m/Y', strtotime($boleto->dt_emissao))}}</td>
                             <td>{{date('d/m/Y', strtotime($boleto->dt_vencimento))}}</td>
-                            <td>{{$boleto->status == 'A' ? 'Pendente' : 'Pago'}}</td>
+                            <td>@if($boleto->status == 'A') Pendente @elseif($boleto->status == 'P') Pago @elseif($boleto->status == 'E') Renegociado @endif</td>
                             <td>{{$boleto->valor_documento}}</td>
                             <td>{{$boleto->juros}}</td>
                             <td>{{$boleto->multa}}</td>
