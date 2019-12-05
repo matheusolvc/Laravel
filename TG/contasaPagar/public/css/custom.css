@@ -258,8 +258,12 @@ a.article, a.article:hover {
     align-content: center;
 }
 
-.fa-trash-alt, .fa-edit, .fa-check, .fa-ban, .fa-money-bill-wave, .fa-sync, .fa-user {
+.fa-trash-alt, .fa-edit, .fa-check, .fa-ban, .fa-money-bill-wave, .fa-sync, .fa-user, .fa-handshake {
     cursor: pointer;
+}
+
+..fa-handshake{
+    color: orange;
 }
 
 .fa-user {
