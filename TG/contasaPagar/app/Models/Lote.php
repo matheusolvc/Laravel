@@ -12,7 +12,12 @@ class Lote extends Model
 
     public function contas()
     {
-        return $this->hasMany('App\Models\Conta', 'id_conta');
+        return $this->hasMany('App\Models\Conta', 'id_lote');
+    }
+
+    public function usuario()
+    {
+        return $this->belongsTo('App\Models\User', 'id_usuario');
     }
 
     public function retorno()

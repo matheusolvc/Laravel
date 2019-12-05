@@ -53,7 +53,7 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="#">Pagar contas</a>
+                        <a href="{{ route('pagar-conta.index') }}">Pagar contas</a>
                     </li>
                     @endif
                     <li>
@@ -66,7 +66,7 @@
                                 </li>
                             @endif
                             <li>
-                                <a href="#">Solicitações</a>
+                                <a href="{{ URL::to('/reembolso/solicitacoes') }}">Solicitações</a>
                             </li>
                         </ul>
                     </li>

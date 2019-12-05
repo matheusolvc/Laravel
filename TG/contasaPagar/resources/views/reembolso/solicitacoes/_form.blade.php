@@ -1,21 +1,22 @@
 <div class="form-row">
-        <div class="form-group col-md-6">
-            <label for="data">Data recibo</label>
-            <input type="text" class="form-control" id="data">
-        </div>
-        <div class="form-group col-md-6">
-            <label for="valor">Data recibo</label>
-            <input type="text" class="form-control" id="valor">
-        </div>
+    <div class="form-group col-md-6">
+        {!! Form::label('dt_recibo', 'Data do recibo') !!}
+        {!! Form::text('dt_recibo', null, ['id' => 'dt_recibo', 'class' => 'form-control', 'placeholder' =>
+        'DD/MM/YYYY']) !!}
     </div>
-    <div class="form-row">
-        <div class="form-group col-md-6">
-            <label for="descricao">Descrição</label>
-            <textarea class="form-control" id="descricao" rows="3"></textarea>
-        </div>
+    <div class="form-group col-md-6">
+        {!! Form::label('valor_documento', 'Valor a reembolsar') !!}
+        {!! Form::text('valor_documento', null, ['id' => 'valor_documento', 'class' => 'form-control', 'placeholder' =>
+        'R$ 0,00']) !!}
     </div>
-    <div class="form-group">
-        <label for="anexo">Anexo</label>
-        <input type="file" class="form-control-file" id="anexo">
+</div>
+<div class="form-row">
+    <div class="form-group col-md-6">
+        {!! Form::label('descricao', 'Descricao') !!}
+        {!! Form::textarea('descricao', null, ['maxlength' => '220','id'=>'text-ini',
+        'rows'=>'3',
+        'class'=>'form-control',
+        'placeholder' =>'Texto...']) !!}
     </div>
-    <button type="submit" class="btn btn-primary">Salvar</button>
+</div>
+

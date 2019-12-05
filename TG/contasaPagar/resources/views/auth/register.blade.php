@@ -30,7 +30,7 @@
 
                             <div class="col-md-6">
                                 <input id="matricula" type="text" class="form-control @error('matricula') is-invalid @enderror" name="matricula" value="{{ old('matricula') }}" required autocomplete="matricula" autofocus>
-                                <input type="hidden" class="form-control" name="tipo_usuario" value="F">
+                                <input type="hidden" class="form-control" name="tipo_usuario" value="C">
 
                                 @error('matricula')
                                     <span class="invalid-feedback" role="alert">

@@ -43,11 +43,23 @@ Route::group(['middleware' => 'auth'], function() {
 
         Route::group(['prefix' => 'reembolso', 'namespace' => 'Reembolso'], function () {
             Route::get('', ['as' => 'reembolso.index', 'uses' => 'ReembolsoController@index']);
+            Route::get('solicitacoes', ['as' => 'reembolso.solicitacoes', 'uses' => 'ReembolsoController@solicitacoes']);
             Route::get('create', ['as' => 'reembolso.create', 'uses' => 'ReembolsoController@create']);
             Route::post('store', ['as' => 'reembolso.store', 'uses' => 'ReembolsoController@store']);
             Route::get('edit/{id}', ['as' => 'reembolso.edit', 'uses' => 'ReembolsoController@edit']);
             Route::put('update/{id}', ['as' => 'reembolso.update', 'uses' => 'ReembolsoController@update']);
             Route::get('destroy/{id}', ['as' => 'reembolso.destroy', 'uses' => 'ReembolsoController@destroy']);
+        });
+
+        Route::group(['prefix' => 'pagar-conta', 'namespace' => 'PagarConta'], function() {
+            Route::get('', ['as' => 'pagar-conta.index', 'uses' => 'PagarContaController@index']);
+            Route::get('create', ['as' => 'pagar-conta.create', 'uses' => 'PagarContaController@create']);
+            Route::post('store', ['as' => 'pagar-conta.store', 'uses' => 'PagarContaController@store']);
+            Route::get('edit/{id}', ['as' => 'pagar-conta.edit', 'uses' => 'PagarContaController@edit']);
+            Route::put('update/{id}', ['as' => 'pagar-conta.update', 'uses' => 'PagarContaController@update']);
+            Route::get('destroy/{id}', ['as' => 'pagar-conta.destroy', 'uses' => 'PagarContaController@destroy']);
+            Route::get('destroyConta/{id}/{id_conta}', ['as' => 'pagar-conta.destroyConta', 'uses' => 'PagarContaController@destroyConta']);
+            Route::get('processar/{id}', ['as' => 'pagar-conta.processar', 'uses' => 'PagarContaController@processar']);
         });
 
     });

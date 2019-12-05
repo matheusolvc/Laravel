@@ -33,5 +33,5 @@
             {!! Form::text('juros', null, ['id' => 'multa', 'class' => 'form-control', 'placeholder' => 'R$ 0,00']) !!}
         </div>
     </div>
-    <button type="submit" class="btn btn-primary">Salvar</button>
+    <button type="submit" class="btn btn-primary" style="float:right">Salvar</button>
 

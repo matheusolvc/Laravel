@@ -107,7 +107,7 @@ class BoletosController extends Controller
         $boleto->id_usuario = Auth::user()->id;
         $boleto->update();
 
-        return redirect('/contas/boletos/edit/'.$id)
+        return redirect('/contas/boletos/edit/' . $id)
             ->with('message', 'Boleto alterado com sucesso.');
     }
 

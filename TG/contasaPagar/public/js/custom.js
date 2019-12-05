@@ -4,7 +4,19 @@ $(document).ready(function() {
         $('#nav-top').toggleClass('nav-expand');
         $('#content').toggleClass('nav-expand')
     });
+
+    $("button.check").click(function(){
+        var ids = [];
+        $.each($("input[class='chk']:checked"), function(){
+            ids.push($(this).val());
+        });
+
+        $("#id_contas").val(ids);
+    });
+
+
 });
+
 
 var ctx = document.getElementById("myChart");
 var myChart = new Chart(ctx, {

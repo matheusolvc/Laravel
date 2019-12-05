@@ -4,6 +4,10 @@ namespace App\Http\Controllers\Contas;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Conta;
+use App\Models\Fornecedor;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Carbon;
 
 class OutrasController extends Controller
 {
@@ -14,7 +18,8 @@ class OutrasController extends Controller
      */
     public function index()
     {
-        //
+        $outrasContas  = Conta::where('tipo_conta', '=', 'O')->paginate(7);
+        return view('contas.outras.index', compact('outrasContas'));
     }
 
     /**
@@ -24,7 +29,8 @@ class OutrasController extends Controller
      */
     public function create()
     {
-        //
+        $fornecedores = Fornecedor::pluck('razao_social', 'id');
+        return view('contas.outras.create', compact('fornecedores'));
     }
 
     /**
@@ -35,7 +41,22 @@ class OutrasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $outrasContas = new Conta();
+        $outrasContas->tipo_conta = 'O';
+        $outrasContas->status = 'A';
+        $outrasContas->num_doc = $request->num_doc;
+        $outrasContas->id_fornecedor = $request->id_fornecedor;
+        $outrasContas->dt_emissao = $request->dt_emissao;
+        $outrasContas->dt_vencimento = $request->dt_vencimento;
+        $outrasContas->valor_documento = $request->valor_documento;
+        $outrasContas->multa = $request->multa;
+        $outrasContas->juros = $request->juros;
+        $outrasContas->dt_criacao = Carbon::now();
+        $outrasContas->id_usuario = Auth::user()->id;
+        $outrasContas->save();
+
+        return redirect('contas/outras/create')
+            ->with('message', 'Conta criada com sucesso.');
     }
 
     /**
@@ -57,7 +78,11 @@ class OutrasController extends Controller
      */
     public function edit($id)
     {
-        //
+        $outrasContas = Conta::FindOrFail($id);
+        $fornecedores = Fornecedor::pluck('razao_social', 'id');
+
+
+        return view('contas.outras.edit', compact('outrasContas', 'fornecedores'));
     }
 
     /**
@@ -69,7 +94,19 @@ class OutrasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $outrasContas = Conta::FindOrFail($id);
+        $outrasContas->id_fornecedor = $request->id_fornecedor;
+        $outrasContas->dt_emissao = $request->dt_emissao;
+        $outrasContas->dt_vencimento = $request->dt_vencimento;
+        $outrasContas->valor_documento = $request->valor_documento;
+        $outrasContas->multa = $request->multa;
+        $outrasContas->juros = $request->juros;
+        $outrasContas->dt_alteracao = Carbon::now();
+        $outrasContas->id_usuario = Auth::user()->id;
+        $outrasContas->update();
+
+        return redirect('/contas/outras/edit/' . $id)
+            ->with('message', 'Conta alterada com sucesso.');
     }
 
     /**
@@ -80,6 +117,10 @@ class OutrasController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $outrasContas = Conta::FindOrFail($id);
+        $outrasContas->delete();
+
+        return redirect('contas/outras')
+            ->with('message', 'outrasContas excluido com sucesso.');
     }
 }

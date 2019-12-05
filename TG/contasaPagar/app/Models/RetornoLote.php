@@ -6,9 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class RetornoLote extends Model
 {
-    protected $table = 'lotes';
+    protected $table = 'retorno_lotes';
     protected $primaryKey = 'id';
     public $timestamps = false;
+
+    protected $fillable = [
+        'id',
+        'id_lote',
+        'status',
+        'mensagem'
+    ];
 
     public function lote()
     {

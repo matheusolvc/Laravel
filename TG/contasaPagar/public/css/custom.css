@@ -253,7 +253,8 @@ a.article:hover {
 .fa-edit,
 .fa-check,
 .fa-ban,
-.fa-money-bill-wave {
+.fa-money-bill-wave,
+.fa-sync {
     cursor: pointer;
 }
 
@@ -267,7 +268,7 @@ a.article:hover {
     color: #2196f3;
 }
 
-.fa-check, .fa-money-bill-wave {
+.fa-check, .fa-money-bill-wave, .fa-sync {
     color: green;
 }
 

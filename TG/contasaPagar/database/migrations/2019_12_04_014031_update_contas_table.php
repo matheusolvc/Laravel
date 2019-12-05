@@ -17,6 +17,10 @@ class UpdateContasTable extends Migration
             $table->foreign('id_renegociacao')
                 ->references('id')->on('renegociacoes')
                 ->onDelete('cascade');
+
+            $table->foreign('id_lote')
+                ->references('id')->on('lotes')
+                ->onDelete('cascade');
         });
     }
 

@@ -42,12 +42,11 @@
                             <td style="text-align:center">-</td>
                             @endif
                             <td class="action-icons">
-
                                 <a href="{{ route('contas.pagar', ['id'=>$boleto->id, 'redirect'=>'contas.boletos.index']) }}">
                                     <i class="fas fa-money-bill-wave" data-toggle="tooltip" data-placement="top"
                                         title="Pagar"></i>
                                 </a>
-                                <a href="{{ route('contas.boletos.destroy', ['id'=>$boleto->id]) }}">
+                                <a href="{{ route('contas.boletos.destroy', ['id'=>$boleto->id]) }}" onclick="return confirm('Deseja excluir o registro ?')">
                                     <i class="fas fa-trash-alt" data-toggle="tooltip" data-placement="top"
                                         title="Excluir"></i>
                                 </a>

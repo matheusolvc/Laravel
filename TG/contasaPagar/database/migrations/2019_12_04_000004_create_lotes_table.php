@@ -15,19 +15,15 @@ class CreateLotesTable extends Migration
     {
         Schema::create('lotes', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('id_conta');
-            $table->foreign('id_conta')
-                ->references('id')->on('contas')
-                ->onDelete('cascade');
             $table->unsignedBigInteger('id_usuario');
             $table->foreign('id_usuario')
                 ->references('id')->on('users')
                 ->onDelete('cascade');
             $table->date('dt_geracao');
-            $table->date('dt_alteracao');
+            $table->date('dt_alteracao')->nullable();
             $table->double('valor_lote', 9,2);
             $table->char('status', 1);
-            $table->dateTime('dt_transmissao');
+            $table->dateTime('dt_transmissao')->nullable();
         });
     }
 

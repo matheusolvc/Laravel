@@ -108,7 +108,7 @@ class ContasController extends Controller
         $conta->id_usuario = Auth::user()->id;
         $conta->update();
 
-        $caixa->saldo = $caixa->saldo - $conta->valor_documento;
+        $caixa->saldo -= $conta->valor_documento;
         $caixa->update();
 
         return redirect()->route($redirect)

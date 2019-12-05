@@ -28,6 +28,7 @@ class CreateContasTable extends Migration
                 ->references('id')->on('colaboradores')
                 ->onDelete('cascade');
             $table->unsignedBigInteger('id_renegociacao')->nullable();
+            $table->unsignedBigInteger('id_lote')->nullable();
             $table->string('codigo_barras', 100)->nullable();
             $table->char('tipo_conta', 1);
             $table->char('status', 1);
@@ -37,7 +38,7 @@ class CreateContasTable extends Migration
             $table->dateTime('dt_criacao');
             $table->dateTime('dt_alteracao')->nullable();
             $table->date('dt_emissao');
-            $table->date('dt_vencimento');
+            $table->date('dt_vencimento')->nullable();
             $table->date('dt_pagamento')->nullable();
             $table->date('dt_recibo')->nullable();
             $table->longText('descricao')->nullable();
