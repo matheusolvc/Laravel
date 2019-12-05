@@ -34,37 +34,37 @@
             <ul class="list-unstyled components">
 
                 @if(Auth::user()->tipo_usuario != 'C')
-                <li class="active">
-                    <a href="#">Dashboard</a>
+                <li class="active side-link">
+                    <a href="">Dashboard</a>
                 </li>
                 <li>
                     <a href="#contaSubmenu" data-toggle="collapse" aria-expanded="false"
                         class="dropdown-toggle">Contas</a>
                     <ul class="collapse list-unstyled" id="contaSubmenu">
-                        <li>
+                        <li class="side-link">
                             <a href="{{ URL::to('/contas/boletos') }}">Boletos</a>
                         </li>
-                        <li>
+                        <li class="side-link">
                             <a href="{{ URL::to('contas/impostos') }}">Impostos</a>
                         </li>
-                        <li>
+                        <li class="side-link">
                             <a href="{{ URL::to('contas/outras') }}">Outras</a>
                         </li>
-                        <li>
+                        <li class="side-link">
                             <a href="{{ URL::to('contas/notas-ficais') }}">Notas Fiscais</a>
                         </li>
                     </ul>
                 </li>
-                <li>
+                <li class="side-link">
                     <a href="{{ route('pagar-conta.index') }}">Pagar contas</a>
                 </li>
                 @endif
-                <li>
+                <li class="side-link">
                     <a href="{{ URL::to('/reembolso') }}">Reembolsos</a>
                 </li>
 
                 @if(Auth::user()->tipo_usuario != 'C')
-                <li>
+                <li class="side-link">
                     <a href="{{ url('/usuarios') }}">Usuários</a>
                 </li>
                 @endif

@@ -1,20 +1,29 @@
-$(document).ready(function() {
-    $('#sidebarCollapse').on('click', function() {
+$(document).ready(function () {
+    $('#sidebarCollapse').on('click', function () {
         $('#sidebar').toggleClass('active');
         $('#nav-top').toggleClass('nav-expand');
         $('#content').toggleClass('nav-expand')
     });
 
-    $("button.check").click(function(){
+    $("button.check").click(function () {
         var ids = [];
-        $.each($("input[class='chk']:checked"), function(){
+        $.each($("input[class='chk']:checked"), function () {
             ids.push($(this).val());
         });
 
         $("#id_contas").val(ids);
     });
+    console.log(document.URL);
 
-
+    var links = $('.side-link').children();
+    $.each(links, function (key, value) {
+        console.log(value.href);
+        if (value.href == document.URL) {
+            $(this).addClass('active-link');
+        } else {
+            $(this).removeClass('active-link');
+        }
+    });
 });
 
 

@@ -111,6 +111,11 @@ a, a:hover, a:focus {
     background: #673bb7;
 }
 
+.active-link {
+    color: #fff;
+    background: #3c2469;
+}
+
 a[data-toggle="collapse"] {
     position: relative;
 }
