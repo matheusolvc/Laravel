@@ -36,7 +36,7 @@
 
                 @if(Auth::user()->tipo_usuario != 'C')
                 <li class="active side-link">
-                    <a href="">Dashboard</a>
+                    <a href="/">Dashboard</a>
                 </li>
                 <li>
                     <a href="#contaSubmenu" data-toggle="collapse" aria-expanded="false"
