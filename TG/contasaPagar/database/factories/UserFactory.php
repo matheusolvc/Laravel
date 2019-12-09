@@ -31,6 +31,29 @@ $factory->define(User::class, function (Faker $faker) {
     ];
 });
 
+$factory->state(\App\Models\User::class, 'colaborador', function ($faker) {
+    return [
+        'name' => 'Carlos Almeida',
+        'matricula' => '23456',
+        'email' => 'colaborador@colaborador',
+        'email_verified_at' => now(),
+        'password' => bcrypt('12345678'), // password
+        'remember_token' => Str::random(10),
+    ];
+});
+
+$factory->state(\App\Models\User::class, 'g', function ($faker) {
+    return [
+        'name' => 'Augusto Almeida',
+        'tipo_usuario' => 'G',
+        'matricula' => '34567',
+        'email' => 'gerente@gerente',
+        'email_verified_at' => now(),
+        'password' => bcrypt('12345678'), // password
+        'remember_token' => Str::random(10),
+    ];
+});
+
 $factory->state(\App\Models\User::class, 'gerente', function ($faker) {
     return [
         'tipo_usuario' => 'G',

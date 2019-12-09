@@ -46,6 +46,10 @@
                                                 <i class="fas fa-money-bill-wave" data-toggle="tooltip" data-placement="top"
                                                     title="Pagar"></i>
                                             </a>
+                                            <a href="{{ route('contas.renegociacao.create', ['id'=>$outra->id]) }}">
+                                                <i class="fas fa-handshake" data-toggle="tooltip" data-placement="top"
+                                                    title="Renegociar"></i>
+                                            </a>
                                         @endif
                                         <a href="{{ route('contas.outras.destroy', ['id'=>$outra->id]) }}"
                                             onclick="return confirm('Deseja excluir o registro ?')">

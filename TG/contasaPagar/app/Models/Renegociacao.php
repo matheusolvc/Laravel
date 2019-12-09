@@ -12,6 +12,16 @@ class Renegociacao extends Model
 
     public function conta()
     {
-        return $this->belongsTo('App\Models\Conta', 'id_renegociacao');
+        return $this->belongsTo('App\Models\Conta', 'id_conta');
+    }
+
+    public function contas()
+    {
+        return $this->hasMany('App\Models\Conta', 'id_renegociacao');
+    }
+
+    public function usuario()
+    {
+        return $this->belongsTo('App\Models\User', 'id_usuario');
     }
 }

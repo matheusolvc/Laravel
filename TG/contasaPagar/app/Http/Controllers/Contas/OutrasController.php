@@ -18,7 +18,11 @@ class OutrasController extends Controller
      */
     public function index()
     {
-        $outrasContas  = Conta::where('tipo_conta', '=', 'O')->paginate(7);
+        $outrasContas  = Conta::where('tipo_conta', '=', 'O')
+            ->orderBy('dt_vencimento', 'asc')
+            ->orderBy('status', 'asc')
+            ->paginate(7);
+
         return view('contas.outras.index', compact('outrasContas'));
     }
 

@@ -1,6 +1,6 @@
 <?php
 
-Auth::routes();
+Auth::routes(['register' => false]);
 
 Route::group(['middleware' => 'auth'], function() {
     Route::group(['middleware' => 'App\Http\Middleware\UserGerente'], function() {
@@ -46,19 +46,14 @@ Route::group(['middleware' => 'auth'], function() {
                 Route::get('', ['as' => 'contas.renegociacao.index', 'uses' => 'RenegociacaoController@index']);
                 Route::get('create/{id}', ['as' => 'contas.renegociacao.create', 'uses' => 'RenegociacaoController@create']);
                 Route::post('store', ['as' => 'contas.renegociacao.store', 'uses' => 'RenegociacaoController@store']);
-                Route::get('edit/{id}', ['as' => 'contas.renegociacao.edit', 'uses' => 'RenegociacaoController@edit']);
-                Route::put('update/{id}', ['as' => 'contas.renegociacao.update', 'uses' => 'RenegociacaoController@update']);
                 Route::get('destroy/{id}', ['as' => 'contas.renegociacao.destroy', 'uses' => 'RenegociacaoController@destroy']);
+                Route::get('pagar/{id}', ['as' => 'contas.renegociacao.pagar', 'uses' => 'RenegociacaoController@pagar']);
             });
 
         });
 
         Route::group(['prefix' => 'reembolso', 'namespace' => 'Reembolso'], function () {
-            Route::get('create', ['as' => 'reembolso.create', 'uses' => 'ReembolsoController@create']);
-            Route::post('store', ['as' => 'reembolso.store', 'uses' => 'ReembolsoController@store']);
-            Route::get('edit/{id}', ['as' => 'reembolso.edit', 'uses' => 'ReembolsoController@edit']);
-            Route::put('update/{id}', ['as' => 'reembolso.update', 'uses' => 'ReembolsoController@update']);
-            Route::get('destroy/{id}', ['as' => 'reembolso.destroy', 'uses' => 'ReembolsoController@destroy']);
+            Route::get('show/{id}', ['as' => 'reembolso.show', 'uses' => 'ReembolsoController@show']);
             Route::get('recusar/{id}', ['as' => 'reembolso.recusar', 'uses' => 'ReembolsoController@recusar']);
         });
 
@@ -82,20 +77,26 @@ Route::group(['middleware' => 'auth'], function() {
 
     });
 
+    //ROTAS GERAIS PARA TODOS OS USUARIOS
+    Route::get('/', 'HomeController@index')->name('home');
 
+    Route::get('/home', 'HomeController@index')->name('home');
+
+    Route::get('/logout', 'Auth\LoginController@logout');
+
+    Route::group(['prefix' => 'reembolso', 'namespace' => 'Reembolso'], function () {
+        Route::get('', ['as' => 'reembolso.index', 'uses' => 'ReembolsoController@index']);
+    });
 
     Route::group(['middleware' => 'App\Http\Middleware\UserColaborador'], function () {
-        //ROTAS GERAIS PARA TODOS OS USUARIOS
-
-        Route::get('/', 'HomeController@index')->name('home');
-
-        Route::get('/home', 'HomeController@index')->name('home');
-
-        Route::get('/logout', 'Auth\LoginController@logout');
-
         Route::group(['prefix' => 'reembolso', 'namespace' => 'Reembolso'], function () {
-            Route::get('', ['as' => 'reembolso.index', 'uses' => 'ReembolsoController@index']);
+            Route::get('create', ['as' => 'reembolso.create', 'uses' => 'ReembolsoController@create', 'middleware' => '']);
+            Route::post('store', ['as' => 'reembolso.store', 'uses' => 'ReembolsoController@store']);
+            Route::get('edit/{id}', ['as' => 'reembolso.edit', 'uses' => 'ReembolsoController@edit']);
+            Route::put('update/{id}', ['as' => 'reembolso.update', 'uses' => 'ReembolsoController@update']);
+            Route::get('destroy/{id}', ['as' => 'reembolso.destroy', 'uses' => 'ReembolsoController@destroy']);
         });
+
     });
 
 });

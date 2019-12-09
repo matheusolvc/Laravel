@@ -49,25 +49,31 @@
                             <a href="{{ URL::to('contas/impostos') }}">Impostos</a>
                         </li>
                         <li class="side-link">
-                            <a href="{{ URL::to('contas/outras') }}">Outras</a>
-                        </li>
-                        <li class="side-link">
                             <a href="{{ URL::to('contas/notas-fiscais') }}">Notas Fiscais</a>
                         </li>
+                                                <li class="side-link">
+                                                    <a href="{{ URL::to('contas/outras') }}">Outras</a>
+                                                </li>
                     </ul>
                 </li>
                 <li class="side-link">
-                    <a href="{{ route('pagar-conta.index') }}">Pagar contas</a>
+                    <a href="{{ route('pagar-conta.index') }}">Remessas</a>
                 </li>
+                <li class="side-link">
+                        <a href="{{ route('contas.renegociacao.index') }}">Renegociações</a>
+                    </li>
                 @endif
                 <li class="side-link">
                     <a href="{{ URL::to('/reembolso') }}">Reembolsos</a>
                 </li>
 
                 @if(Auth::user()->tipo_usuario != 'C')
-                <li class="side-link">
-                    <a href="{{ url('/usuarios') }}">Usuários</a>
-                </li>
+                    <li class="side-link">
+                        <a href="{{ url('/usuarios') }}">Usuários</a>
+                    </li>
+                    <li class="side-link">
+                        <a href="{{ url('/usuarios') }}">Relatórios</a>
+                    </li>
                 @endif
             </ul>
 
@@ -82,7 +88,10 @@
                     <i class="fas fa-bars whitesmoke"></i>
                 </button>
 
+                <p class="text-center text-success">Saldo : {{$saldo}}</p>
+
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
                     @if (Route::has('login'))
                     <ul class="nav navbar-nav ml-auto">
                         @auth

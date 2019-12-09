@@ -19,11 +19,13 @@ class ReembolsoController extends Controller
     {
         if (Auth::user()->tipo_usuario == 'G' || Auth::user()->tipo_usuario == 'G') {
             $reembolsos = Conta::where('tipo_conta', '=', 'R')
+                ->orderBy('dt_vencimento', 'asc')
                 ->orderBy('status', 'asc')
                 ->paginate(7);
         } else {
             $reembolsos = Conta::where('tipo_conta', '=', 'R')
-                ->where('id_usuario', '=', Auth::user()->id)
+                ->where('id_colaborador', '=', Auth::user()->id)
+                ->orderBy('dt_vencimento', 'asc')
                 ->paginate(7);
         }
 
@@ -38,6 +40,13 @@ class ReembolsoController extends Controller
     public function create()
     {
         return view('reembolso.create');
+    }
+
+    public function show($id)
+    {
+        $reembolso = Conta::FindOrFail($id);
+        $reembolso->dt_recibo = date('d/m/Y', strtotime($reembolso->dt_recibo));
+        return view('reembolso.show', compact('reembolso'));
     }
 
     /**
@@ -56,11 +65,12 @@ class ReembolsoController extends Controller
         $reembolso->dt_emissao = Carbon::now();
         $reembolso->multa = 0;
         $reembolso->juros = 0;
-        $reembolso->dt_recibo = $request->dt_recibo;
+        $reembolso->dt_recibo = date('Y-m-d', strtotime($request->dt_recibo));
         $reembolso->valor_documento = $request->valor_documento;
         $reembolso->descricao = $request->descricao;
         $reembolso->dt_criacao = Carbon::now();
         $reembolso->id_usuario = Auth::user()->id;
+        $reembolso->id_colaborador = Auth::user()->id;
 
         // if ($request->hasFile('anexo')) {
         //     $image = $request->file('anexo');
@@ -74,29 +84,13 @@ class ReembolsoController extends Controller
         $reembolso->save();
 
         return redirect('reembolso/create')
-            ->with('message', 'reembolso criado com sucesso.');
+            ->with('message', 'Reembolso criado com sucesso.');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         $reembolso = Conta::FindOrFail($id);
+        $reembolso->dt_recibo = date('d/m/Y', strtotime($reembolso->dt_recibo));
         return view('reembolso.edit', compact('reembolso'));
     }
 
@@ -115,10 +109,11 @@ class ReembolsoController extends Controller
         $reembolso->descricao = $request->descricao;
         $reembolso->dt_alteracao = Carbon::now();
         $reembolso->id_usuario = Auth::user()->id;
+        $reembolso->id_colaborador = Auth::user()->id;
         $reembolso->update();
 
         return redirect('/reembolso/edit/' . $id)
-            ->with('message', 'reembolso alterado com sucesso.');
+            ->with('message', 'Reembolso alterado com sucesso.');
     }
 
     /**
@@ -133,7 +128,7 @@ class ReembolsoController extends Controller
         $reembolso->delete();
 
         return redirect('reembolso')
-            ->with('message', 'reembolso excluido com sucesso.');
+            ->with('message', 'Reembolso excluido com sucesso.');
     }
 
     public function recusar($id)
@@ -146,6 +141,6 @@ class ReembolsoController extends Controller
         $reembolso->update();
 
         return redirect('reembolso')
-            ->with('message', 'reembolso recusado com sucesso.');
+            ->with('message', 'Reembolso recusado com sucesso.');
     }
 }

@@ -36,6 +36,7 @@ class PagarContaController extends Controller
     {
         $contas = Conta::where('status', '=', 'A')
             ->where('id_lote', '=', null)
+            ->orderBy('dt_vencimento', 'asc')
             ->paginate(5);
 
         return view('pagar-contas.create', compact('contas'));
@@ -97,6 +98,8 @@ class PagarContaController extends Controller
         $lote_contas = Conta::where('id_lote', '=', $lote->id)->paginate(5);
         $contas = Conta::where('status', '=', 'A')
             ->where('id_lote', '=', null)
+            ->orderBy('dt_vencimento', 'asc')
+            ->orderBy('status', 'asc')
             ->paginate(5);
 
         return view('pagar-contas.edit', compact('lote', 'contas', 'lote_contas'));

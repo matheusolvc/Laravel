@@ -45,6 +45,10 @@
                                             <i class="fas fa-money-bill-wave" data-toggle="tooltip" data-placement="top"
                                                 title="Pagar"></i>
                                         </a>
+                                        <a href="{{ route('contas.renegociacao.create', ['id'=>$imposto->id]) }}">
+                                            <i class="fas fa-handshake" data-toggle="tooltip" data-placement="top"
+                                                title="Renegociar"></i>
+                                        </a>
                                     @endif
                                     <a href="{{ route('contas.impostos.destroy', ['id'=>$imposto->id]) }}" onclick="return confirm('Deseja excluir o registro ?')">
                                         <i class="fas fa-trash-alt" data-toggle="tooltip" data-placement="top"

@@ -44,10 +44,16 @@
                                 @endif
                                 <td class="action-icons">
                                     @if($notaFiscal->status == 'A')
-                                        <a href="{{ route('contas.pagar', ['id'=>$notaFiscal->id, 'redirect'=>'contas.notas-fiscais.index']) }}">
-                                            <i class="fas fa-money-bill-wave" data-toggle="tooltip" data-placement="top"
-                                                title="Pagar"></i>
-                                        </a>
+                                        @if(Auth::user()->tipo_usuario == 'G')
+                                            <a href="{{ route('contas.pagar', ['id'=>$notaFiscal->id, 'redirect'=>'contas.notas-fiscais.index']) }}">
+                                                <i class="fas fa-money-bill-wave" data-toggle="tooltip" data-placement="top"
+                                                    title="Pagar"></i>
+                                            </a>
+                                            <a href="{{ route('contas.renegociacao.create', ['id'=>$notaFiscal->id]) }}">
+                                                <i class="fas fa-handshake" data-toggle="tooltip" data-placement="top"
+                                                    title="Renegociar"></i>
+                                            </a>
+                                        @endif
                                         <a href="{{ route('contas.notas-fiscais.destroy', ['id'=>$notaFiscal->id]) }}" onclick="return confirm('Deseja excluir o registro ?')">
                                             <i class="fas fa-trash-alt" data-toggle="tooltip" data-placement="top"
                                                 title="Excluir"></i>

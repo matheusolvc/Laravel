@@ -17,7 +17,10 @@ class ImpostosController extends Controller
      */
     public function index()
     {
-        $impostos  = Conta::where('tipo_conta', '=', 'I')->paginate(7);
+        $impostos  = Conta::where('tipo_conta', '=', 'I')
+            ->orderBy('dt_vencimento', 'asc')
+            ->orderBy('status', 'asc')
+            ->paginate(7);
         return view('contas.impostos.index', compact('impostos'));
     }
 

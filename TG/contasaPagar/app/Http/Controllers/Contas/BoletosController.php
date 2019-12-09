@@ -18,7 +18,11 @@ class BoletosController extends Controller
      */
     public function index()
     {
-        $boletos  = Conta::where('tipo_conta', '=', 'B')->paginate(7);
+        $boletos  = Conta::where('tipo_conta', '=', 'B')
+            ->orderBy('dt_vencimento', 'asc')
+            ->orderBy('status', 'asc')
+            ->paginate(7);
+
         return view('contas.boletos.index', compact('boletos'));
     }
 

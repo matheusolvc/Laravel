@@ -45,11 +45,10 @@
                                             <i class="fas fa-money-bill-wave" data-toggle="tooltip" data-placement="top"
                                                 title="Pagar"></i>
                                         </a>
-                                    <a href="{{ route('contas.renegociacao.create', ['id'=>$boleto->id, 'route'=>'"contas.boletos.index", ["route" => contas.boletos.index]']) }}">
+                                        <a href="{{ route('contas.renegociacao.create', ['id'=>$boleto->id]) }}">
                                             <i class="fas fa-handshake" data-toggle="tooltip" data-placement="top"
                                                 title="Renegociar"></i>
                                         </a>
-
                                     @endif
                                     <a href="{{ route('contas.boletos.destroy', ['id'=>$boleto->id]) }}" onclick="return confirm('Deseja excluir o registro ?')">
                                         <i class="fas fa-trash-alt" data-toggle="tooltip" data-placement="top"

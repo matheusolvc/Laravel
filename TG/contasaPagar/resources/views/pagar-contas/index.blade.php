@@ -5,10 +5,6 @@
     <div class="col-sm-12 div-card">
         <div class="card card-dashboard">
             <div class="card-body">
-
-                {{-- TODO - Filtros --}}
-                {{-- END TODO --}}
-
                 <h5 class="card-title table-title">Remessas pendentes</h5>
                 <div class="table-responsive">
                     <table class="table table-hover">
@@ -38,10 +34,13 @@
                                 <td>{{ $lote->dt_transmissao == null ? '-' : date('d/m/Y', strtotime($lote->dt_transmissao)) }}
                                 </td>
                                 <td class="action-icons">
-                                    <a href="{{ route('pagar-conta.processar', ['id'=>$lote->id]) }}">
-                                        <i class="fas fa-check" data-toggle="tooltip" data-placement="top"
-                                            title="Processar"></i>
-                                    </a>
+                                    @if(Auth::user()->tipo_usuario == 'G')
+                                        <a href="{{ route('pagar-conta.processar', ['id'=>$lote->id]) }}">
+                                            <i class="fas fa-check" data-toggle="tooltip" data-placement="top"
+                                                title="Processar"></i>
+                                        </a>
+                                    @endif
+
                                     <a href="{{ route('pagar-conta.destroy', ['id'=>$lote->id]) }}"
                                         onclick="return confirm('Deseja excluir o registro ?')">
                                         <i class="fas fa-trash-alt" data-toggle="tooltip" data-placement="top"
@@ -102,11 +101,11 @@
                                 </td>
                                 <td>{{ $retorno_lote->mensagem  }}</td>
                                 <td class="action-icons">
-                                    @if($retorno_lote->status == 'F')
-                                    <a href="{{ route('pagar-conta.processar', ['id'=>$retorno_lote->lote->id]) }}">
-                                        <i class="fas fa-sync" data-toggle="tooltip" data-placement="top"
-                                            title="Reenviar"></i>
-                                    </a>
+                                    @if($retorno_lote->status == 'F' && Auth::user()->tipo_usuario == 'G')
+                                        <a href="{{ route('pagar-conta.processar', ['id'=>$retorno_lote->lote->id]) }}">
+                                            <i class="fas fa-sync" data-toggle="tooltip" data-placement="top"
+                                                title="Reenviar"></i>
+                                        </a>
                                     @endif
                                 </td>
                             </tr>
