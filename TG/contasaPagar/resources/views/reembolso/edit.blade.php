@@ -8,8 +8,12 @@
                 <h5 class="card-title table-title">Solicitações</h5>
                 {!! Form::model($reembolso, ['route'=>['reembolso.update', $reembolso->id], 'method'=>'put',
                 'enctype'=> 'multipart/form-data']) !!}
-                    @include('reembolso._form')
-                    <a href="{{ route('reembolso.index') }}">Voltar</a>
+                @include('reembolso._form')
+                <div class="form-group col-md-6">
+                <img src="{{asset($reembolso->arquivo)}}">
+                </div>
+                <button type="submit" class="btn btn-primary" style="float: right">Salvar</button>
+                <a href="{{ route('reembolso.index') }}">Voltar</a>
                 {!! Form::close() !!}
             </div>
         </div>

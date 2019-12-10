@@ -98,7 +98,7 @@ Route::group(['middleware' => 'auth'], function() {
 
     Route::group(['middleware' => 'App\Http\Middleware\UserColaborador'], function () {
         Route::group(['prefix' => 'reembolso', 'namespace' => 'Reembolso'], function () {
-            Route::get('create', ['as' => 'reembolso.create', 'uses' => 'ReembolsoController@create', 'middleware' => '']);
+            Route::get('create', ['as' => 'reembolso.create', 'uses' => 'ReembolsoController@create']);
             Route::post('store', ['as' => 'reembolso.store', 'uses' => 'ReembolsoController@store']);
             Route::get('edit/{id}', ['as' => 'reembolso.edit', 'uses' => 'ReembolsoController@edit']);
             Route::put('update/{id}', ['as' => 'reembolso.update', 'uses' => 'ReembolsoController@update']);

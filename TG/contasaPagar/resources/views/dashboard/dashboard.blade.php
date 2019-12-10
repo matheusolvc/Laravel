@@ -26,7 +26,8 @@
     <div class="col-sm-12 div-card">
         <div class="card card-dashboard">
             <div class="card-body">
-            {!! $chartjs->render() !!}
+                <h5 class="card-title">Despesas</h5>
+                {!! $chartjs->render() !!}
             </div>
         </div>
     </div>

@@ -10,10 +10,6 @@
         'R$ 0,00']) !!}
     </div>
     <div class="form-group col-md-12">
-        {!! Form::label('anexo', 'Arquivo') !!}
-        {!! Form::file('arquivo', ['id' => 'anexo', 'class' => 'form-control-file']) !!}
-    </div>
-    <div class="form-group col-md-12">
         {!! Form::label('descricao', 'Descrição') !!}
         {!! Form::textarea('descricao', null, ['maxlength' => '220','id'=>'descricao',
         'rows'=>'3',
@@ -21,5 +17,3 @@
         'placeholder' =>'Texto...']) !!}
     </div>
 </div>
-<button type="submit" class="btn btn-primary" style="float: right">Salvar</button>
-

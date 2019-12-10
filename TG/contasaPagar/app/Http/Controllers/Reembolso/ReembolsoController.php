@@ -72,14 +72,14 @@ class ReembolsoController extends Controller
         $reembolso->id_usuario = Auth::user()->id;
         $reembolso->id_colaborador = Auth::user()->id;
 
-        // if ($request->hasFile('anexo')) {
-        //     $image = $request->file('anexo');
-        //     $name = Auth::user()->id.'_' . $reembolso->id_grupo . '.' . $image->getClientOriginalExtension();
-        //     $destinationPath = base_path('public/files/reembolsos');
-        //     $image->move($destinationPath, $name);
+        if ($request->hasFile('arquivo')) {
+            $image = $request->file('arquivo');
+            $name = time().'_' . $reembolso->id_usuario . '.' . $image->getClientOriginalExtension();
+            $destinationPath = base_path('public/files/reembolsos');
+            $image->move($destinationPath, $name);
 
-        //     $reembolso->img = asset('files/reembolsos') . '/' . $name;
-        // }
+            $reembolso->arquivo = '/files/reembolsos' . '/' . $name;
+        }
 
         $reembolso->save();
 
