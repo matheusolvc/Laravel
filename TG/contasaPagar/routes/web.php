@@ -7,7 +7,6 @@ Route::group(['middleware' => 'auth'], function() {
         Route::group(['prefix' => 'contas'], function() {
             Route::get('pagar/{id}/{redirect}', ['as' => 'contas.pagar', 'uses' => 'Contas\ContasController@pagar']);
 
-
             Route::group(['prefix' => 'boletos', 'namespace' => 'Contas'], function () {
                 Route::get('', ['as' => 'contas.boletos.index', 'uses' => 'BoletosController@index']);
                 Route::get('create', ['as' => 'contas.boletos.create', 'uses' => 'BoletosController@create']);
@@ -77,7 +76,14 @@ Route::group(['middleware' => 'auth'], function() {
             Route::get('destroy/{id}', ['as' => 'usuarios.destroy', 'uses' => 'UsuariosController@destroy']);
         });
 
+    });//Routes with contas prefix
+
+
+    Route::group(['prefix' => 'relatorios', 'namespace' => 'Relatorios'], function () {
+        Route::get('', ['as' => 'relatorios.index', 'uses' => 'RelatoriosController@index']);
+        Route::post('gerar', ['as' => 'relatorios.gerar', 'uses' => 'RelatoriosController@gerar']);
     });
+
 
     //ROTAS GERAIS PARA TODOS OS USUARIOS
     Route::get('/', 'HomeController@index')->name('home');
