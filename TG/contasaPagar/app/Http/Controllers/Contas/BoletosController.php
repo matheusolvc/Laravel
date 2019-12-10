@@ -8,7 +8,7 @@ use App\Models\Conta;
 use App\Models\Fornecedor;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Carbon;
-use App\Http\Classes\boletosPHP;
+use App\Http\Classes\lib\boletosPHP;
 use App\Http\Requests\StoreContaRequest;
 
 class BoletosController extends Controller
@@ -128,7 +128,16 @@ class BoletosController extends Controller
     {
         $barras = new boletosPHP();
 
-        $barras->setIpte($cod_barras);
+        $linha_digitavel = substr($cod_barras, 0, 5) . '.';
+        $linha_digitavel .= substr($cod_barras, 5, 5). ' ';
+        $linha_digitavel .= substr($cod_barras, 10, 5). '.';
+        $linha_digitavel .= substr($cod_barras, 15, 6). ' ';
+        $linha_digitavel .= substr($cod_barras, 21, 5). '.';
+        $linha_digitavel .= substr($cod_barras, 26, 6). ' ';
+        $linha_digitavel .= substr($cod_barras, 32, 1). ' ';
+        $linha_digitavel .= substr($cod_barras, 33, 14);
+
+        $barras->setIpte($linha_digitavel);
 
         $json = [
             "valor_doc" => $barras -> getValorDocumento(),

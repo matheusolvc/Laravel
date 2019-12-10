@@ -11,7 +11,7 @@
  */
 
 
- namespace App\Http\Classes;
+ namespace App\Http\Classes\lib;
 
 class boletosPHP {
     private $ipte;

@@ -142,7 +142,7 @@ class PagarContaController extends Controller
             $valor_lote += $conta->valor_documento;
         }
 
-        $lote->valor_lote = $valor_lote;
+        $lote->valor_lote = $lote->valor_lote + $valor_lote;
         $lote->update();
 
         return redirect()->route('pagar-conta.edit', ['id' => $lote->id])
