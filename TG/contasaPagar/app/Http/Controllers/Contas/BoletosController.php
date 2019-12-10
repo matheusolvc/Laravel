@@ -8,6 +8,8 @@ use App\Models\Conta;
 use App\Models\Fornecedor;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Carbon;
+use App\Http\Classes\boletosPHP;
+use App\Http\Requests\StoreContaRequest;
 
 class BoletosController extends Controller
 {
@@ -43,8 +45,10 @@ class BoletosController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreContaRequest $request)
     {
+        dd($request);
+
         $boleto = new Conta();
         $boleto->tipo_conta = 'B';
         $boleto->status = 'A';
@@ -88,8 +92,11 @@ class BoletosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreContaRequest $request, $id)
     {
+
+        dd($request);
+
         $boleto = Conta::FindOrFail($id);
         $boleto->codigo_barras = $request->codigo_barras;
         $boleto->id_fornecedor = $request->id_fornecedor;
@@ -120,5 +127,21 @@ class BoletosController extends Controller
 
         return redirect('contas/boletos')
             ->with('message', 'Boleto excluido com sucesso.');
+    }
+
+    public function lerBoleto($cod_barras)
+    {
+        $barras = new boletosPHP();
+
+        $barras->setIpte($cod_barras);
+
+        $json = [
+            "valor_doc" => $barras -> getValorDocumento(),
+            "dt_vencimento" => $barras -> getDtVencimento(),
+        ];
+
+        return response()
+            ->json($json);
+
     }
 }

@@ -19,11 +19,11 @@
                         </div>
                         <div class="form-group col-md-6">
                             {!! Form::label('periodo_apuracao', 'Período de apuração') !!}
-                            {!! Form::text('dt_vencimento', null, ['id' => 'dt_vencimento', 'class' => 'form-control', 'placeholder' => 'DD/MM/YYYY']) !!}
+                            {!! Form::text('dt_vencimento', null, ['id' => 'dt_vencimento', 'class' => 'form-control date', 'placeholder' => 'DD/MM/YYYY']) !!}
                         </div>
                         <div class="form-group col-md-6">
                             {!! Form::label('cnpj_matriz', 'CNPJ Matriz') !!}
-                            {!! Form::text('cnpj_matriz', null, ['id' => 'cnpj_matriz', 'class' => 'form-control', 'placeholder' => 'CNPJ']) !!}
+                            {!! Form::text('cnpj_matriz', null, ['id' => 'cnpj_matriz', 'class' => 'form-control cnpj', 'placeholder' => 'CNPJ']) !!}
                         </div>
                     @stop
                     @include('contas._form')

@@ -7,6 +7,7 @@ Route::group(['middleware' => 'auth'], function() {
         Route::group(['prefix' => 'contas'], function() {
             Route::get('pagar/{id}/{redirect}', ['as' => 'contas.pagar', 'uses' => 'Contas\ContasController@pagar']);
 
+
             Route::group(['prefix' => 'boletos', 'namespace' => 'Contas'], function () {
                 Route::get('', ['as' => 'contas.boletos.index', 'uses' => 'BoletosController@index']);
                 Route::get('create', ['as' => 'contas.boletos.create', 'uses' => 'BoletosController@create']);
@@ -14,6 +15,7 @@ Route::group(['middleware' => 'auth'], function() {
                 Route::get('edit/{id}', ['as' => 'contas.boletos.edit', 'uses' => 'BoletosController@edit']);
                 Route::put('update/{id}', ['as' => 'contas.boletos.update', 'uses' => 'BoletosController@update']);
                 Route::get('destroy/{id}', ['as' => 'contas.boletos.destroy', 'uses' => 'BoletosController@destroy']);
+                Route::get('boleto/{cod_barras}', 'BoletosController@lerBoleto');
             });
 
             Route::group(['prefix' => 'impostos', 'namespace' => 'Contas'], function () {

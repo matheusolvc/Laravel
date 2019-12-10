@@ -19,7 +19,6 @@ class NotaFiscalController extends Controller
     {
         $notasFiscais  = Conta::where('tipo_conta', '=', 'N')
             ->orderBy('dt_vencimento', 'asc')
-            v
             ->paginate(7);
 
             return view('contas.notas-fiscais.index', compact('notasFiscais'));

@@ -11,7 +11,8 @@
                      @section('form-complement')
                         <div class="form-group col-md-6">
                             {!! Form::label('codigo_barras', 'Cód Barras') !!}
-                            {!! Form::text('codigo_barras', null, ['id' => 'codigo_barras', 'class' => 'form-control', 'placeholder' => 'Código de Barras']) !!}
+                            {!! Form::text('codigo_barras', null, ['id' => 'codigo_barras', 'class' => 'form-control cod_barras', 'placeholder' => 'Código de Barras',
+                            'data-url' => URL::to('/contas/boletos/boleto')]) !!}
                         </div>
                         <div class="form-group col-md-6">
                             {!! Form::label('fornecedor', 'Fornecedor') !!}

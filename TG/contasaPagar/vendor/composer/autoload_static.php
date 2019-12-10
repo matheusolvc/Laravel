@@ -40,6 +40,7 @@ class ComposerStaticInit1dadf5f76811ab2d73b18df1c0a3c430
         array (
             'Whoops\\' => 7,
             'Webmozart\\Assert\\' => 17,
+            'Waavi\\Sanitizer\\' => 16,
         ),
         'T' => 
         array (
@@ -163,6 +164,10 @@ class ComposerStaticInit1dadf5f76811ab2d73b18df1c0a3c430
         'Webmozart\\Assert\\' => 
         array (
             0 => __DIR__ . '/..' . '/webmozart/assert/src',
+        ),
+        'Waavi\\Sanitizer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/waavi/sanitizer/src',
         ),
         'TijsVerkoyen\\CssToInlineStyles\\' => 
         array (
@@ -425,6 +430,7 @@ class ComposerStaticInit1dadf5f76811ab2d73b18df1c0a3c430
     public static $classMap = array (
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
+        'App\\Http\\Classes\\boletosPHP' => __DIR__ . '/../..' . '/app/Http/Classes/boletosPHP.php',
         'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
         'App\\Http\\Controllers\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/LoginController.php',
@@ -2466,6 +2472,8 @@ class ComposerStaticInit1dadf5f76811ab2d73b18df1c0a3c430
         'PHPUnit\\Framework\\Constraint\\StringMatchesFormatDescription' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Constraint/StringMatchesFormatDescription.php',
         'PHPUnit\\Framework\\Constraint\\StringStartsWith' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Constraint/StringStartsWith.php',
         'PHPUnit\\Framework\\Constraint\\TraversableContains' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Constraint/TraversableContains.php',
+        'PHPUnit\\Framework\\Constraint\\TraversableContainsEqual' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Constraint/TraversableContainsEqual.php',
+        'PHPUnit\\Framework\\Constraint\\TraversableContainsIdentical' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Constraint/TraversableContainsIdentical.php',
         'PHPUnit\\Framework\\Constraint\\TraversableContainsOnly' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Constraint/TraversableContainsOnly.php',
         'PHPUnit\\Framework\\CoveredCodeNotExecutedException' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Exception/CoveredCodeNotExecutedException.php',
         'PHPUnit\\Framework\\DataProviderTestSuite' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/DataProviderTestSuite.php',
@@ -2536,6 +2544,7 @@ class ComposerStaticInit1dadf5f76811ab2d73b18df1c0a3c430
         'PHPUnit\\Framework\\MockObject\\Stub\\Stub' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/MockObject/Stub/Stub.php',
         'PHPUnit\\Framework\\MockObject\\UnmockedCloneMethod' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/MockObject/Api/UnmockedCloneMethod.php',
         'PHPUnit\\Framework\\MockObject\\Verifiable' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/MockObject/Verifiable.php',
+        'PHPUnit\\Framework\\NoChildTestSuiteException' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Exception/NoChildTestSuiteException.php',
         'PHPUnit\\Framework\\OutputError' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Exception/OutputError.php',
         'PHPUnit\\Framework\\PHPTAssertionFailedError' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Exception/PHPTAssertionFailedError.php',
         'PHPUnit\\Framework\\RiskyTestError' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Exception/RiskyTestError.php',
@@ -2555,7 +2564,6 @@ class ComposerStaticInit1dadf5f76811ab2d73b18df1c0a3c430
         'PHPUnit\\Framework\\TestResult' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/TestResult.php',
         'PHPUnit\\Framework\\TestSuite' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/TestSuite.php',
         'PHPUnit\\Framework\\TestSuiteIterator' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/TestSuiteIterator.php',
-        'PHPUnit\\Framework\\UnexpectedValueException' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Exception/UnexpectedValueException.php',
         'PHPUnit\\Framework\\UnintentionallyCoveredCodeError' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Exception/UnintentionallyCoveredCodeError.php',
         'PHPUnit\\Framework\\Warning' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Exception/Warning.php',
         'PHPUnit\\Framework\\WarningTestCase' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/WarningTestCase.php',
@@ -2607,6 +2615,7 @@ class ComposerStaticInit1dadf5f76811ab2d73b18df1c0a3c430
         'PHPUnit\\Util\\Filter' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/Filter.php',
         'PHPUnit\\Util\\Getopt' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/Getopt.php',
         'PHPUnit\\Util\\GlobalState' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/GlobalState.php',
+        'PHPUnit\\Util\\InvalidDataSetException' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/InvalidDataSetException.php',
         'PHPUnit\\Util\\Json' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/Json.php',
         'PHPUnit\\Util\\Log\\JUnit' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/Log/JUnit.php',
         'PHPUnit\\Util\\Log\\TeamCity' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/Log/TeamCity.php',
@@ -4242,6 +4251,24 @@ class ComposerStaticInit1dadf5f76811ab2d73b18df1c0a3c430
         'TijsVerkoyen\\CssToInlineStyles\\Css\\Rule\\Processor' => __DIR__ . '/..' . '/tijsverkoyen/css-to-inline-styles/src/Css/Rule/Processor.php',
         'TijsVerkoyen\\CssToInlineStyles\\Css\\Rule\\Rule' => __DIR__ . '/..' . '/tijsverkoyen/css-to-inline-styles/src/Css/Rule/Rule.php',
         'UserTableSeeder' => __DIR__ . '/../..' . '/database/seeds/UserTableSeeder.php',
+        'Waavi\\Sanitizer\\Contracts\\Filter' => __DIR__ . '/..' . '/waavi/sanitizer/src/Contracts/Filter.php',
+        'Waavi\\Sanitizer\\Filters\\Capitalize' => __DIR__ . '/..' . '/waavi/sanitizer/src/Filters/Capitalize.php',
+        'Waavi\\Sanitizer\\Filters\\Cast' => __DIR__ . '/..' . '/waavi/sanitizer/src/Filters/Cast.php',
+        'Waavi\\Sanitizer\\Filters\\Digit' => __DIR__ . '/..' . '/waavi/sanitizer/src/Filters/Digit.php',
+        'Waavi\\Sanitizer\\Filters\\EscapeHTML' => __DIR__ . '/..' . '/waavi/sanitizer/src/Filters/EscapeHTML.php',
+        'Waavi\\Sanitizer\\Filters\\FilterIf' => __DIR__ . '/..' . '/waavi/sanitizer/src/Filters/FilterIf.php',
+        'Waavi\\Sanitizer\\Filters\\FormatDate' => __DIR__ . '/..' . '/waavi/sanitizer/src/Filters/FormatDate.php',
+        'Waavi\\Sanitizer\\Filters\\Lowercase' => __DIR__ . '/..' . '/waavi/sanitizer/src/Filters/Lowercase.php',
+        'Waavi\\Sanitizer\\Filters\\StripTags' => __DIR__ . '/..' . '/waavi/sanitizer/src/Filters/StripTags.php',
+        'Waavi\\Sanitizer\\Filters\\Trim' => __DIR__ . '/..' . '/waavi/sanitizer/src/Filters/Trim.php',
+        'Waavi\\Sanitizer\\Filters\\Uppercase' => __DIR__ . '/..' . '/waavi/sanitizer/src/Filters/Uppercase.php',
+        'Waavi\\Sanitizer\\Laravel\\Facade' => __DIR__ . '/..' . '/waavi/sanitizer/src/Laravel/Facade.php',
+        'Waavi\\Sanitizer\\Laravel\\Factory' => __DIR__ . '/..' . '/waavi/sanitizer/src/Laravel/Factory.php',
+        'Waavi\\Sanitizer\\Laravel\\FormRequest' => __DIR__ . '/..' . '/waavi/sanitizer/src/Laravel/FormRequest.php',
+        'Waavi\\Sanitizer\\Laravel\\RequestMakeCommand' => __DIR__ . '/..' . '/waavi/sanitizer/src/Laravel/RequestMakeCommand.php',
+        'Waavi\\Sanitizer\\Laravel\\SanitizerServiceProvider' => __DIR__ . '/..' . '/waavi/sanitizer/src/Laravel/SanitizerServiceProvider.php',
+        'Waavi\\Sanitizer\\Laravel\\SanitizesInput' => __DIR__ . '/..' . '/waavi/sanitizer/src/Laravel/SanitizesInput.php',
+        'Waavi\\Sanitizer\\Sanitizer' => __DIR__ . '/..' . '/waavi/sanitizer/src/Sanitizer.php',
         'Webmozart\\Assert\\Assert' => __DIR__ . '/..' . '/webmozart/assert/src/Assert.php',
         'Whoops\\Exception\\ErrorException' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Exception/ErrorException.php',
         'Whoops\\Exception\\Formatter' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Exception/Formatter.php',
