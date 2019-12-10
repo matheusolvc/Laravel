@@ -20,15 +20,14 @@
                         'placeholder' => 'R$ 0,00', 'disabled']) !!}
                     </div>
                     <div class="form-group col-md-12">
-                        {!! Form::label('anexo', 'Arquivo') !!}
-                        {!! Form::file('arquivo', ['id' => 'anexo', 'class' => 'form-control-file']) !!}
-                    </div>
-                    <div class="form-group col-md-12">
                         {!! Form::label('descricao', 'Descrição') !!}
                         {!! Form::textarea('descricao', null, ['maxlength' => '220','id'=>'descricao',
                         'rows'=>'3',
                         'class'=>'form-control',
                         'placeholder' =>'Texto...', 'disabled']) !!}
+                    </div>
+                    <div class="form-group col-md-6">
+                        <img src="{{asset($reembolso->arquivo)}}">
                     </div>
                 </div>
                 <a href="{{ route('reembolso.index') }}">Voltar</a>
