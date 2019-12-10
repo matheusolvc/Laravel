@@ -915,6 +915,8 @@ return array(
     'FontLib\\WOFF\\Header' => $vendorDir . '/phenx/php-font-lib/src/FontLib/WOFF/Header.php',
     'FontLib\\WOFF\\TableDirectoryEntry' => $vendorDir . '/phenx/php-font-lib/src/FontLib/WOFF/TableDirectoryEntry.php',
     'FornecedorTableSeeder' => $baseDir . '/database/seeds/FornecedorTableSeeder.php',
+    'Fx3costa\\LaravelChartJs\\Builder' => $vendorDir . '/fx3costa/laravelchartjs/src/Builder.php',
+    'Fx3costa\\LaravelChartJs\\Providers\\ChartjsServiceProvider' => $vendorDir . '/fx3costa/laravelchartjs/src/Providers/ChartjsServiceProvider.php',
     'HTML5_Data' => $vendorDir . '/dompdf/dompdf/lib/html5lib/Data.php',
     'HTML5_InputStream' => $vendorDir . '/dompdf/dompdf/lib/html5lib/InputStream.php',
     'HTML5_Parser' => $vendorDir . '/dompdf/dompdf/lib/html5lib/Parser.php',

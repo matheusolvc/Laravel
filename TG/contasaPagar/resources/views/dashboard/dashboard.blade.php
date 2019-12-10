@@ -26,7 +26,7 @@
     <div class="col-sm-12 div-card">
         <div class="card card-dashboard">
             <div class="card-body">
-                <canvas class="my-4" id="myChart" width="900" height="380"></canvas>
+            {!! $chartjs->render() !!}
             </div>
         </div>
     </div>
