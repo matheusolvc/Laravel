@@ -6,9 +6,8 @@
     </div>
     <div class="form-group col-md-6">
         {!! Form::label('valor_documento', 'Valor a reembolsar') !!}
-        {!! Form::text('valor_documento', null, ['id' => 'valor_documento', 'class' => 'form-control money', 'placeholder' =>
+        {!! Form::text('valor_documento', null, ['id' => 'valor_documento', 'class' => 'form-control money', 'placeholder' => 'R$ 0,00']) !!}
     </div>
-        'R$ 0,00']) !!}
     <div class="form-group col-md-12">
         {!! Form::label('descricao', 'Descrição') !!}
         {!! Form::textarea('descricao', null, ['maxlength' => '220','id'=>'descricao',
