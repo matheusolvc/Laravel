@@ -46,7 +46,7 @@
                                     @if(Auth::user()->tipo_usuario != 'C')
                                     <td>
                                         <a
-                                        href="{{ route('contas.pagar', ['id'=>$reembolso->id, 'redirect'=>'reembolso.show']) }}">
+                                        href="{{ route('reembolso.show', ['id'=>$reembolso->id]) }}">
                                             <i class="fas fa-eye" data-toggle="tooltip" data-placement="top"
                                             title="Visualizar"></i>
                                         </a>

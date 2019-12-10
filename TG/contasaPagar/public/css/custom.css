@@ -309,3 +309,11 @@ a.article, a.article:hover {
     width: 100% !important;
     left: 0;
 }
+
+.text-saldo{
+    color: whitesmoke;
+    border: 1px solid #38c172;
+    background-color: #38c172;
+    padding: 15px 0;
+    border-radius: 8px;
+}
