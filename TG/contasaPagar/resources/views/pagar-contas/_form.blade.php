@@ -5,15 +5,15 @@
     </div>
     <div class="form-group col-md-6">
         {!! Form::label('dt_geracao', 'Data Geração') !!}
-        {!! Form::text('dt_geracao', date('d/m/Y', strtotime($lote->dt_geracao)), ['id' => 'dt_geracao', 'class' => 'form-control', 'placeholder' => '0000', 'disabled' => true]) !!}
+        {!! Form::text('dt_geracao', date('d/m/Y', strtotime($lote->dt_geracao)), ['id' => 'dt_geracao', 'class' => 'form-control date', 'placeholder' => '0000', 'disabled' => true]) !!}
     </div>
     <div class="form-group col-md-6">
         {!! Form::label('dt_alteracao', 'Data Alteração') !!}
-        {!! Form::text('dt_alteracao', $lote->alteracao, ['id' => 'dt_alteracao', 'class' => 'form-control', 'placeholder' => 'DD/MM/YYYY', 'disabled' => true]) !!}
+        {!! Form::text('dt_alteracao', $lote->alteracao, ['id' => 'dt_alteracao', 'class' => 'form-control date', 'placeholder' => 'DD/MM/YYYY', 'disabled' => true]) !!}
     </div>
     <div class="form-group col-md-6">
         {!! Form::label('valor_lote', 'Valor Lote') !!}
-        {!! Form::text('valor_lote', $lote->valor_lote, ['id' => 'valor_lote', 'class' => 'form-control', 'placeholder' => '0000', 'disabled' => true]) !!}
+        {!! Form::text('valor_lote', $lote->valor_lote, ['id' => 'valor_lote', 'class' => 'form-control money', 'placeholder' => '0000', 'disabled' => true]) !!}
     </div>
 
     <h5 class="card-title table-title col-md-12">Contas adicionadas</h5>

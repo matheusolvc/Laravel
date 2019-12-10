@@ -77,9 +77,11 @@
                 @endif
             </ul>
 
-            <ul class="list-unstyled CTAs">
-                <li class="text-center text-saldo">Saldo : {{$saldo}}</li>
-            </ul>
+            @if(Auth::user()->tipo_usuario == 'G')
+                <ul class="list-unstyled CTAs">
+                    <li class="text-center text-saldo">Saldo : {{$saldo}}</li>
+                </ul>
+            @endif
         </nav>
         <nav id="nav-top" class="purple navbar navbar-expand-lg navbar-light">
             <div class="container-fluid">

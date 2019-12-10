@@ -96,6 +96,11 @@ Route::group(['middleware' => 'auth'], function() {
         Route::get('', ['as' => 'reembolso.index', 'uses' => 'ReembolsoController@index']);
     });
 
+    Route::group(['prefix' => 'dashboard', 'namespace' => 'Dashboard'], function () {
+        Route::get('', ['as' => 'dashboard.index', 'uses' => 'DashboardController@index']);
+        Route::post('charts/{filtro}', ['as' => 'dashboard.charts', 'uses' => 'DashboardController@charts']);
+    });
+
     Route::group(['middleware' => 'App\Http\Middleware\UserColaborador'], function () {
         Route::group(['prefix' => 'reembolso', 'namespace' => 'Reembolso'], function () {
             Route::get('create', ['as' => 'reembolso.create', 'uses' => 'ReembolsoController@create']);
