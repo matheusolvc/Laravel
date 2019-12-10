@@ -36,6 +36,8 @@ return array(
     'App\\Http\\Middleware\\UserColaborador' => $baseDir . '/app/Http/Middleware/UserColaborador.php',
     'App\\Http\\Middleware\\UserGerente' => $baseDir . '/app/Http/Middleware/UserGerente.php',
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
+    'App\\Http\\Requests\\BaseFormRequest' => $baseDir . '/app/Http/Requests/BaseFormRequest.php',
+    'App\\Http\\Requests\\StoreContaRequest' => $baseDir . '/app/Http/Requests/StoreContaRequest.php',
     'App\\Models\\Caixa' => $baseDir . '/app/Models/Caixa.php',
     'App\\Models\\Colaborador' => $baseDir . '/app/Models/Colaborador.php',
     'App\\Models\\Conta' => $baseDir . '/app/Models/Conta.php',

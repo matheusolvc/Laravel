@@ -29,10 +29,10 @@
                             <td>{{date('d/m/Y', strtotime($boleto->dt_emissao))}}</td>
                             <td>{{date('d/m/Y', strtotime($boleto->dt_vencimento))}}</td>
                             <td>@if($boleto->status == 'A') Pendente @elseif($boleto->status == 'P') Pago @elseif($boleto->status == 'E') Renegociado @endif</td>
-                            <td>{{$boleto->valor_documento}}</td>
-                            <td>{{$boleto->juros}}</td>
-                            <td>{{$boleto->multa}}</td>
-                            <td>{{$boleto->juros + $boleto->valor_documento + $boleto->multa}}</td>
+                            <td class="">{{$boleto->valor_documento}}</td>
+                            <td class="">{{$boleto->juros}}</td>
+                            <td class="">{{$boleto->multa}}</td>
+                            <td class="">{{$boleto->juros + $boleto->valor_documento + $boleto->multa}}</td>
                             @if($boleto->dt_pagamento != null || $boleto->dt_pagamento != '')
                             <td>{{date('d/m/Y', strtotime($boleto->dt_pagamento))}}</td>
                             @else

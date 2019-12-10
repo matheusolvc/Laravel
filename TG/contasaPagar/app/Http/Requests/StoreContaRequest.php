@@ -58,7 +58,7 @@ class StoreContaRequest extends FormRequest
     public function filters()
     {
         return [
-            'valor_documento' => 'trim',
+            'valor_documento' => 'trim|cast:float',
             'dt_emissao' => 'trim|format_date:d/m/Y, Y-m-d',
             'dt_vencimento' => 'trim|format_date:d/m/Y, Y-m-d',
             'multa' => 'trim|escape',

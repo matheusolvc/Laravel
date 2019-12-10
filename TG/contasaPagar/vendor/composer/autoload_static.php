@@ -458,6 +458,8 @@ class ComposerStaticInit1dadf5f76811ab2d73b18df1c0a3c430
         'App\\Http\\Middleware\\UserColaborador' => __DIR__ . '/../..' . '/app/Http/Middleware/UserColaborador.php',
         'App\\Http\\Middleware\\UserGerente' => __DIR__ . '/../..' . '/app/Http/Middleware/UserGerente.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
+        'App\\Http\\Requests\\BaseFormRequest' => __DIR__ . '/../..' . '/app/Http/Requests/BaseFormRequest.php',
+        'App\\Http\\Requests\\StoreContaRequest' => __DIR__ . '/../..' . '/app/Http/Requests/StoreContaRequest.php',
         'App\\Models\\Caixa' => __DIR__ . '/../..' . '/app/Models/Caixa.php',
         'App\\Models\\Colaborador' => __DIR__ . '/../..' . '/app/Models/Colaborador.php',
         'App\\Models\\Conta' => __DIR__ . '/../..' . '/app/Models/Conta.php',

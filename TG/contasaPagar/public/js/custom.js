@@ -2,22 +2,22 @@ $(document).ready(function () {
     $('.date').mask('00/00/0000');
     $('.cod_barras').mask('00000.00000 00000.000000 00000.000000 0 00000000000000');
     $('.num_doc').mask('0000');
-    $('.cpf').mask('000.000.000-00', {reverse: true});
+    $('.cpf').mask('000.000.000-00', { reverse: true });
     $('.cep').mask('00000-000');
-    $('.cnpj').mask('00.000.000/0000-00', {reverse: true});
-    $('.money').mask('000.000.000.000.000,00', {reverse: true})
+    $('.cnpj').mask('00.000.000/0000-00', { reverse: true });
+    $('.money').mask('000.000.000.000.000,00')
 
-    $('.cod_barras').keydown(function(event) {
+    $('.cod_barras').keydown(function (event) {
 
         var keycode = (event.keyCode ? event.keyCode : event.which);
-            if(keycode == '13'){
-                event.preventDefault();
+        if (keycode == '13') {
+            event.preventDefault();
 
-                $.get($(this).data('url')+'/'+$(this).val(), function(data, status){
-                    $("#dt_vencimento").val(data['dt_vencimento']);
-                    $("#valor_documento").val(data['valor_doc']);
-                });
-            }
+            $.get($(this).data('url') + '/' + $(this).val(), function (data, status) {
+                $("#dt_vencimento").val(data['dt_vencimento']);
+                $("#valor_documento").val(data['valor_doc']);
+            });
+        }
     });
 
     $('#sidebarCollapse').on('click', function () {

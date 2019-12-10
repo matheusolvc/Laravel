@@ -47,16 +47,14 @@ class BoletosController extends Controller
      */
     public function store(StoreContaRequest $request)
     {
-        dd($request);
-
         $boleto = new Conta();
         $boleto->tipo_conta = 'B';
         $boleto->status = 'A';
         $boleto->num_doc = $request->num_doc;
         $boleto->codigo_barras = $request->codigo_barras;
         $boleto->id_fornecedor = $request->id_fornecedor;
-        $boleto->dt_emissao = date('Y-m-d', strtotime($request->dt_emissao));
-        $boleto->dt_vencimento = date('Y-m-d', strtotime($request->dt_vencimento));
+        $boleto->dt_emissao = $request->dt_emissao;
+        $boleto->dt_vencimento = $request->dt_vencimento;
         $boleto->valor_documento = $request->valor_documento;
         $boleto->multa = $request->multa;
         $boleto->juros = $request->juros;
@@ -94,9 +92,6 @@ class BoletosController extends Controller
      */
     public function update(StoreContaRequest $request, $id)
     {
-
-        dd($request);
-
         $boleto = Conta::FindOrFail($id);
         $boleto->codigo_barras = $request->codigo_barras;
         $boleto->id_fornecedor = $request->id_fornecedor;
